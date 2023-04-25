@@ -22,7 +22,7 @@ function Games() {
     return <Game key={game.id} game={game} />;
   });
 
-  return <div id="gameContainer">{gamesToRender}</div>;
+  return <div>{gamesToRender}</div>;
 }
 
 export default Games;
