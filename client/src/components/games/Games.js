@@ -1,24 +1,28 @@
 import Game from "./Game";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Games() {
-  const [games, setGames] = useState();
+  const [games, setGames] = useState([]);
 
+  useEffect(() => {
+    getGames();
+  }, []);
   async function getGames() {
     try {
       const res = await fetch("http://localhost:3001/api/games");
       const response = await res.json();
+      console.log(response);
       setGames(response);
     } catch (error) {
       console.log(`Fetching games failed: ${error}`);
     }
   }
 
-  return (
-    <div id="gameContainer">
-      <Game />
-    </div>
-  );
+  const gamesToRender = games.map((game) => {
+    return <Game key={game.id} game={game} />;
+  });
+
+  return <div id="gameContainer">{gamesToRender}</div>;
 }
 
 export default Games;
