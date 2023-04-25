@@ -1,42 +1,63 @@
-.game {
-  width: 100vw;
-}
-
 #gameContainer {
-  width: 800px;
-  height: 300px;
+  margin-top: 30px;
+  box-sizing: border-box;
+  width: 1015px;
+  height: 350px;
   display: grid;
-  column-gap: 0px;
-  grid-template-columns: 500px 1fr;
+  column-gap: 5px;
+  grid-template-columns: 550px 1fr;
+  background-color: rgb(41, 41, 41);
+  color: rgb(148, 148, 148);
+  font-family: "Motiva Sans", Sans-serif;
+  margin-left: calc((100vw - 915px) / 2);
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.634);
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 4px;
 }
 
 #backGroundImage {
-  display: block;
-  height: 300px;
+  margin-top: 25px;
+  margin-left: 50px;
+  box-sizing: border-box;
+  height: 298px;
   width: 500px;
   object-fit: cover;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0);
+  border-width: 1px;
+  border-radius: 4px;
 }
 #gameContainerSecondColumn {
+  margin-top: 25px;
+  box-sizing: border-box;
   display: grid;
   height: 300px;
   width: 300px;
 }
 
 #screenshotsContainer {
-  width: 300px;
+  box-sizing: border-box;
+  width: 405px;
   height: 250px;
-  column-gap: 20px;
-  row-gap: 20px;
-  grid-template-columns: 120px 120px;
+  display: grid;
+  column-gap: 5px;
+  row-gap: 5px;
+  grid-template-columns: 200px 200px;
 }
 
 .screenshot {
-  width: 120px;
-  height: 65px;
+  box-sizing: border-box;
+  width: 200px;
+  height: 120px;
   object-fit: cover;
 }
 
 #mainPageGameName {
+  box-sizing: border-box;
+  font-size: 24px;
+  font-weight: 600;
 }
 
 /* #container {
