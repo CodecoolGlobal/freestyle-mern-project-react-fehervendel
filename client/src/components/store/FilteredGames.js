@@ -1,5 +1,5 @@
 import { useState } from "react";
-import FilteredGame from "./FilteredGame";
+import FilteredGame from "./FeaturedGames";
 
 function FilteredGames() {
   return null;

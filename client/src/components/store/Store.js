@@ -1,7 +1,7 @@
 import React from "react";
-import { useState } from "react";
-import Games from "../games/Games";
+import { useState, useEffect } from "react";
 import FilteredGames from "./FilteredGames";
+import FeaturedGames from "./FeaturedGames";
 
 function Store() {
   const [allGames, setAllGames] = useState();
@@ -14,13 +14,12 @@ function Store() {
     try {
       const res = await fetch("http://localhost:3001/api/allgames");
       const response = await res.json();
-      console.log(response);
       setAllGames(response);
     } catch (error) {
       console.log(`Fetching games failed: ${error}`);
     }
   }
-  return <div>{filteredGames === false ? <Games /> : <FilteredGames />}</div>;
+  return <div>{filteredGames === false ? <FeaturedGames/> : <FilteredGames allGames={allGames}/>}</div>;
 }
 
 export default Store;

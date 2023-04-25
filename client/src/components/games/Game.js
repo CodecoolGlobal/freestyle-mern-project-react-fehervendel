@@ -2,7 +2,7 @@ import "./css/Game.css";
 
 function Game(props) {
   return (
-    <div class="game">
+    <div className="game">
       <div id="gameContainer">
         <img src={props.game.background_image} id="backGroundImage"></img>
         <div id="gameContainerSecondColumn">
