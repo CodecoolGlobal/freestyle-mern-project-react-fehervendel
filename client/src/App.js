@@ -13,6 +13,7 @@ function App() {
       <Menu setShowRegisterForm={setShowRegisterForm} />
       {showRegisterForm === "register" ? <Registerfields setShowRegisterForm={setShowRegisterForm} /> : <></>}
       {showRegisterForm === "login" ? <Loginfields setShowRegisterForm={setShowRegisterForm} /> : <></>}
+      {showRegisterForm === "user" ? <div>component_placeholder</div> : <></>}
     </div>
   );
 }
