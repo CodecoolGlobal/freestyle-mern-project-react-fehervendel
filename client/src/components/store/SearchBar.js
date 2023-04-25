@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 
-function SearchBar() {}
+function SearchBar() {
+  return (
+    <div>
+      <input type="text" placeholder="Search"></input>
+    </div>
+  );
+}
 
 export default SearchBar;

@@ -2,6 +2,7 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  background-color: rgb(46, 59, 58);
 }
 
 .App {

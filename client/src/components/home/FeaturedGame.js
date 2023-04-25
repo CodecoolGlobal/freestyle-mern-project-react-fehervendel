@@ -1,16 +1,7 @@
-import "./css/Game.css";
+import "./css/FeaturedGame.css";
 
-function Game(props) {
+function FeaturedGame(props) {
   return (
-    // <div class="game">
-    //   <div id="gameContainer">
-    //     <img src={props.game.background_image} id="backGroundImage"></img>
-    //     <div id="gameContainerSecondColumn">
-    //       <div id="mainPageGameName">{props.game.name}</div>
-    //     </div>
-    //   </div>
-    // </div>
-
     <div id="gameContainer">
       <img src={props.game.background_image} id="backGroundImage"></img>
       <div id="gameContainerSecondColumn">
@@ -27,15 +18,4 @@ function Game(props) {
   );
 }
 
-/*id: Number,
-name: String,
-released: Date,
-background_image: String,
-rating: Number,
-genres: [],
-tags: [],
-short_screenshots: [],
-price: Number,
-});*/
-
-export default Game;
+export default FeaturedGame;

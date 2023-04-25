@@ -22,6 +22,7 @@ function Menu(props) {
         </div>
         <div id="menuGridContainer">
           <div onClick={storeClickHandler}>STORE</div>
+          <div>LIBRARY</div>
           <div>ABOUT</div>
           <div>SUPPORT</div>
         </div>

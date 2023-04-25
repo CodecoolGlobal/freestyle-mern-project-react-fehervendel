@@ -27,13 +27,13 @@
   grid-template-columns: 50px 80px;
 }
 #menuGridContainer {
-  width: 300px;
+  width: 335px;
   display: inline-block;
   height: 50px;
   align-items: center;
   display: grid;
   column-gap: 5px;
-  grid-template-columns: 80px 80px 80px;
+  grid-template-columns: 80px 80px 80px 80px;
 }
 
 #logo {
