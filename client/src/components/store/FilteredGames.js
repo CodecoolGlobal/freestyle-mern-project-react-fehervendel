@@ -1,33 +1,51 @@
 import { useEffect, useState } from "react";
 import FilteredGame from "./AllGamesPage";
 
-function FilteredGames({searchFor}) {
-  const [allGames, setAllGames] = useState([]);
+function FilteredGames({ searchFor }) {
+  const [filteredGames, setFilteredGames] = useState([]);
 
-  useEffect(() => {  
+  useEffect(() => {
     async function getGames() {
       try {
         const res = await fetch("http://localhost:3001/api/allgames");
         const response = await res.json();
-        setAllGames(response);
+        // const result = response.filter((game) => {
+        //   let found = false;
+        //   game.tags.forEach((tag) => {
+        //     if (tag.name.includes(searchFor)) {
+        //       found = true;
+        //     }
+        //   })
+        //   return found;
+        // })
+        const result = response.filter((game) => game.name.includes(searchFor));        
+        setFilteredGames(result);
       } catch (error) {
         console.log(`Fetching games failed: ${error}`);
       }
     }
     getGames();
-  },[])
+  }, [])
 
-  async function getGames() {
-    try {
-      const res = await fetch("http://localhost:3001/api/allgames");
-      const response = await res.json();
-      setAllGames(response);
-    } catch (error) {
-      console.log(`Fetching games failed: ${error}`);
-    }
-  }
-  
-  return (null)
+  // {allGames.forEach((game) => {
+  //       game.tags.forEach((tag) => {
+  //         if (tag.name.includes(searchFor)) {
+  //           console.log(game.name)
+  //           return <div>{game.name}</div>
+  //         }
+  //       })
+  //     })}
+
+
+
+
+  return (
+    <div>
+      <div>{filteredGames.map((game) => 
+        <div>{game.name}</div>
+      )}</div>
+    </div>
+  )
 }
 
 export default FilteredGames;
