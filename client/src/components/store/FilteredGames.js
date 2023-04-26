@@ -12,32 +12,20 @@ function FilteredGames({ searchFor }) {
         // const result = response.filter((game) => {
         //   let found = false;
         //   game.tags.forEach((tag) => {
-        //     if (tag.name.includes(searchFor)) {
+        //     if (tag.name.includes(searchFor)) {    NE TÖRÖLD KI
         //       found = true;
         //     }
         //   })
         //   return found;
         // })
-        const result = response.filter((game) => game.name.includes(searchFor));        
+        const result = response.filter((game) => game.name.toLowerCase().includes(searchFor.toLowerCase()));        
         setFilteredGames(result);
       } catch (error) {
         console.log(`Fetching games failed: ${error}`);
       }
     }
     getGames();
-  }, [])
-
-  // {allGames.forEach((game) => {
-  //       game.tags.forEach((tag) => {
-  //         if (tag.name.includes(searchFor)) {
-  //           console.log(game.name)
-  //           return <div>{game.name}</div>
-  //         }
-  //       })
-  //     })}
-
-
-
+  }, [searchFor])
 
   return (
     <div>
