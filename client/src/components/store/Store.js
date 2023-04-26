@@ -12,7 +12,7 @@ function Store(props) {
   return (
     <div>
       <SearchBar setSearchFor={setSearchFor} setFilteredGames={props.setFilteredGames}/>
-      {props.filteredGames === false ? <AllGamesPage />: <FilteredGames searchFor={searchFor} allGames={allGames} />}
+      {props.filteredGames === false ? <AllGamesPage setRenderSelectedGame={props.setRenderSelectedGame} renderSelectedGame={props.renderSelectedGame}/>: <FilteredGames setRenderSelectedGame={props.setRenderSelectedGame} renderSelectedGame={props.renderSelectedGame} searchFor={searchFor} allGames={allGames} />}
     </div>
   );
 }

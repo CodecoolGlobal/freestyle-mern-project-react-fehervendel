@@ -19,7 +19,7 @@ function App() {
     cart: [],
     loggedIn: false
   });
-
+  const [renderSelectedGame, setRenderSelectedGame] = useState(false);
 
   useEffect(() => {
     getFirst20Games();
@@ -50,12 +50,12 @@ function App() {
 
   return (
     <div className="App">
-      <Menu setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab} setFilteredGames={setFilteredGames} userData={loggedInUser} loginSetter={setLoggedInUser}/>
+      <Menu setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab} setFilteredGames={setFilteredGames} userData={loggedInUser} loginSetter={setLoggedInUser} setRenderSelectedGame={setRenderSelectedGame} renderSelectedGame={renderSelectedGame}/>
       {showRegisterForm === "register" ? <Registerfields setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab}/> : <></>}
       {showRegisterForm === "login" ? <Loginfields setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab} userData={loggedInUser}/> : <></>}
       {showRegisterForm === "user" ? <div>{loggedInUser.name}</div> : <></>}
       {showTab === "home" ? <Home featuredGames={featuredGames} /> : <></>}
-      {showTab === "store" ? <Store filteredGames={filteredGames} setFilteredGames={setFilteredGames} allGames={allGames} /> : <></>}
+      {showTab === "store" ? <Store filteredGames={filteredGames} setFilteredGames={setFilteredGames} allGames={allGames} setRenderSelectedGame={setRenderSelectedGame} renderSelectedGame={renderSelectedGame}/> : <></>}
     </div>
   );
 }
