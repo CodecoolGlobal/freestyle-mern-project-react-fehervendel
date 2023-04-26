@@ -18,13 +18,13 @@ function Menu(props) {
       <div id="container">
         <div id="logoContainer">
           <img src={logo} alt="Matrix Logo" id="logo" />
-          <div onClick={shadowClickHandler}>SHADOW</div>
+          <button onClick={shadowClickHandler}>SHADOW</button>
         </div>
         <div id="menuGridContainer">
-          <div onClick={storeClickHandler}>STORE</div>
-          <div>LIBRARY</div>
-          <div>ABOUT</div>
-          <div>SUPPORT</div>
+          <button onClick={storeClickHandler}>STORE</button>
+          <button>LIBRARY</button>
+          <button>ABOUT</button>
+          <button>SUPPORT</button>
         </div>
       </div>
     </div>
