@@ -4,19 +4,20 @@ import Registerfields from "./components/loginScreen/Registerfields.js";
 import Loginfields from "./components/loginScreen/Loginfields.js";
 import Home from "./components/home/Home.js";
 import Store from "./components/store/Store.js";
+import UserProfile from "./components/home/UserProfile.js";
 import "./App.css";
 
 function App() {
   const [featuredGames, setFeaturedGames] = useState([]);
   const [allGames, setAllGames] = useState();
   const [showRegisterForm, setShowRegisterForm] = useState(0);
-  const [loginSelected, setloginSelected] = useState(false);
   const [showTab, setShowTab] = useState("home");
   const [filteredGames, setFilteredGames] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState({
     name:'',
     library: [],
     cart: [],
+    email:'',
     loggedIn: false
   });
 
@@ -52,8 +53,8 @@ function App() {
     <div className="App">
       <Menu setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab} setFilteredGames={setFilteredGames} userData={loggedInUser} loginSetter={setLoggedInUser}/>
       {showRegisterForm === "register" ? <Registerfields setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab}/> : <></>}
-      {showRegisterForm === "login" ? <Loginfields setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab} userData={loggedInUser}/> : <></>}
-      {showRegisterForm === "user" ? <div>{loggedInUser.name}</div> : <></>}
+      {showRegisterForm === "login" ? <Loginfields setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab} userDataSetter={setLoggedInUser}userData={loggedInUser}/> : <></>}
+      {showTab === "user" ? <UserProfile userData={loggedInUser}/> : <></>}
       {showTab === "home" ? <Home featuredGames={featuredGames} /> : <></>}
       {showTab === "store" ? <Store filteredGames={filteredGames} setFilteredGames={setFilteredGames} allGames={allGames} /> : <></>}
     </div>

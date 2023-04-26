@@ -30,9 +30,20 @@ function Loginfields(props) {
         headers: { "Content-type": "application/json; charset=UTF-8" },
       });
       const response = await res.json();
-      if( response === 1){
-        props.userData.name = userName;
-        props.userData.loggedIn = true;
+      if( response.access === 1){
+       
+        props.userDataSetter(prevState => ({
+          ...prevState, name: userName
+        }));
+
+        props.userDataSetter(prevState => ({
+          ...prevState, loggedIn: true
+        }));
+        console.log(response);
+        props.userDataSetter(prevState => ({
+          ...prevState, email: response.email
+        }));
+
         console.log("Access enabled!");
         props.setShowRegisterForm('user');
       } else {

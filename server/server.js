@@ -43,9 +43,10 @@ app.post("/api/userlogin", async (req, res) => {
     const userName = req.body.userName;
     const userPassword = crypto.createHash('sha256').update(req.body.userPassword).digest('hex');
     const user = await User.find({ userName: userName });
-
+    
+    
       if(user.length > 0 && user[0].userPassword === userPassword){
-        res.status(200).json(1);
+        res.status(200).json({ access: 1, email: user[0].userEmail});
       } else {
         res.status(401).json(0);
       }

@@ -9,9 +9,14 @@ function LoggedInUser(props) {
     });
   }
 
+  function showProfile(){
+    props.tabSetter("user");
+  }
+
   return (
     <div id="userLoginContainer">
-      <div>{props.userName}</div>
+      <div>Welcome {props.userName}!</div>
+      <button type="button" onClick={showProfile}>Profile</button>
       <button type="button" onClick={logOut}>
         Log out
       </button>
