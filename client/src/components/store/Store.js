@@ -6,14 +6,13 @@ import SearchBar from "./SearchBar";
 
 function Store(props) {
   const allGames = props.allGames;
-  const [filteredGames, setFilteredGames] = useState(false); 
   const [searchFor, setSearchFor] = useState("");
 
 
   return (
     <div>
-      <SearchBar setSearchFor={setSearchFor} setFilteredGames={setFilteredGames}/>
-      {filteredGames === false ? <AllGamesPage />: <FilteredGames searchFor={searchFor} allGames={allGames} />}
+      <SearchBar setSearchFor={setSearchFor} setFilteredGames={props.setFilteredGames}/>
+      {props.filteredGames === false ? <AllGamesPage />: <FilteredGames searchFor={searchFor} allGames={allGames} />}
     </div>
   );
 }

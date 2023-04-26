@@ -12,6 +12,7 @@ function App() {
   const [showRegisterForm, setShowRegisterForm] = useState(0);
   const [loginSelected, setloginSelected] = useState(false);
   const [showTab, setShowTab] = useState("home");
+  const [filteredGames, setFilteredGames] = useState(false);
 
   useEffect(() => {
     getFirst20Games();
@@ -42,12 +43,12 @@ function App() {
 
   return (
     <div className="App">
-      <Menu setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab} />
+      <Menu setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab} setFilteredGames={setFilteredGames}/>
       {showRegisterForm === "register" ? <Registerfields setShowRegisterForm={setShowRegisterForm} /> : <></>}
       {showRegisterForm === "login" ? <Loginfields setShowRegisterForm={setShowRegisterForm} /> : <></>}
       {showRegisterForm === "user" ? <div>component_placeholder</div> : <></>}
       {showTab === "home" ? <Home featuredGames={featuredGames} /> : <></>}
-      {showTab === "store" ? <Store allGames={allGames} /> : <></>}
+      {showTab === "store" ? <Store filteredGames={filteredGames} setFilteredGames={setFilteredGames} allGames={allGames} /> : <></>}
     </div>
   );
 }

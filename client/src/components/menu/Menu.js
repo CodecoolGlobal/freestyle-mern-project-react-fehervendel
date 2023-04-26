@@ -9,6 +9,7 @@ function Menu(props) {
   }
   function storeClickHandler() {
     setShowTab("store");
+    props.setFilteredGames(false);
   }
 
   return (
