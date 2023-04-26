@@ -19,7 +19,7 @@ function Menu(props) {
     <div id="header">
       {}
       
-      {props.userData.loggedIn ? <LoggedInUser userName={props.userData.name}/> : <SignUpOrLogin setShowRegisterForm={props.setShowRegisterForm} tabSetter={setShowTab}/> }
+      {props.userData.loggedIn ? <LoggedInUser userName={props.userData.name} loginSetter={props.loginSetter}/> : <SignUpOrLogin setShowRegisterForm={props.setShowRegisterForm} tabSetter={setShowTab}/> }
       <div id="container">
         <div id="logoContainer">
           <img src={logo} alt="Matrix Logo" id="logo" />

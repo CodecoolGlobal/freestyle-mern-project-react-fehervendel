@@ -1,4 +1,14 @@
 function LoggedInUser(props) {
+
+  function logOut(){
+    props.loginSetter({
+      name:'',
+      library: [],
+      cart: [],
+      loggedIn: false
+    });
+  }
+
   return (
     <div id="userLoginContainer">
       <div>{props.userName}</div>

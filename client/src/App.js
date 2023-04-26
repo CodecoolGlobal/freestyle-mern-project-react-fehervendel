@@ -50,7 +50,7 @@ function App() {
 
   return (
     <div className="App">
-      <Menu setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab} setFilteredGames={setFilteredGames} userData={loggedInUser}/>
+      <Menu setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab} setFilteredGames={setFilteredGames} userData={loggedInUser} loginSetter={setLoggedInUser}/>
       {showRegisterForm === "register" ? <Registerfields setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab}/> : <></>}
       {showRegisterForm === "login" ? <Loginfields setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab} userData={loggedInUser}/> : <></>}
       {showRegisterForm === "user" ? <div>{loggedInUser.name}</div> : <></>}
