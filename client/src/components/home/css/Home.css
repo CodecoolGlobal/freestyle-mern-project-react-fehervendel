@@ -1,0 +1,8 @@
+#homeTitle {
+  margin-top: 10px;
+  font-size: 30px;
+  font-weight: 600;
+  color: rgb(148, 148, 148);
+  font-family: "Motiva Sans", Sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}

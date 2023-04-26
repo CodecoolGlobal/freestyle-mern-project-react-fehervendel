@@ -1,6 +1,25 @@
 import "./css/FeaturedGame.css";
+import { useEffect } from "react";
 
 function FeaturedGame(props) {
+  const setCounter = props.setCounter;
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCounter((prevState) => {
+        if (prevState === 19) {
+          return 0;
+        } else {
+          return prevState + 1;
+        }
+      });
+    }, 4000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
   return (
     <div id="gameContainer">
       <img src={props.game.background_image} id="backGroundImage"></img>

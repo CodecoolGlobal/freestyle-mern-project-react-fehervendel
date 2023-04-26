@@ -14,12 +14,11 @@ function App() {
   const [showTab, setShowTab] = useState("home");
   const [filteredGames, setFilteredGames] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState({
-    name:'',
+    name: "",
     library: [],
     cart: [],
-    loggedIn: false
+    loggedIn: false,
   });
-
 
   useEffect(() => {
     getFirst20Games();
@@ -50,12 +49,30 @@ function App() {
 
   return (
     <div className="App">
-      <Menu setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab} setFilteredGames={setFilteredGames} userData={loggedInUser} loginSetter={setLoggedInUser}/>
-      {showRegisterForm === "register" ? <Registerfields setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab}/> : <></>}
-      {showRegisterForm === "login" ? <Loginfields setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab} userData={loggedInUser}/> : <></>}
-      {showRegisterForm === "user" ? <div>{loggedInUser.name}</div> : <></>}
+      <Menu
+        setShowRegisterForm={setShowRegisterForm}
+        tabSetter={setShowTab}
+        setFilteredGames={setFilteredGames}
+        userData={loggedInUser}
+        loginSetter={setLoggedInUser}
+      />
+      {showRegisterForm === "register" ? (
+        <Registerfields setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab} />
+      ) : (
+        <></>
+      )}
+      {showRegisterForm === "login" ? (
+        <Loginfields setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab} userData={loggedInUser} />
+      ) : (
+        <></>
+      )}
+      {showRegisterForm === "user" ? <Home featuredGames={featuredGames} /> : <></>}
       {showTab === "home" ? <Home featuredGames={featuredGames} /> : <></>}
-      {showTab === "store" ? <Store filteredGames={filteredGames} setFilteredGames={setFilteredGames} allGames={allGames} /> : <></>}
+      {showTab === "store" ? (
+        <Store filteredGames={filteredGames} setFilteredGames={setFilteredGames} allGames={allGames} />
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

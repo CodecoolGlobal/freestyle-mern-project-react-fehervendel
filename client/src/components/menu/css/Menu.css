@@ -11,6 +11,7 @@
 
 #container {
   height: 50px;
+  width: 505px;
   align-items: center;
   display: grid;
   column-gap: 0px;
