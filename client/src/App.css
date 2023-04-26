@@ -8,3 +8,14 @@ body {
 .App {
   text-align: center;
 }
+
+button {
+  background-color: rgb(41, 41, 41);
+  color: rgb(148, 148, 148);
+  border-radius: 5px;
+}
+
+#searchBar {
+  border-radius: 5px;
+  margin: 5px;
+}

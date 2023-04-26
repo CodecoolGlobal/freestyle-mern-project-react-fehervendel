@@ -11,7 +11,7 @@ function Store(props) {
   return (
     <div>
       <SearchBar />
-      {filteredGames === false ? <AllGamesPage /> : <FilteredGames allGames={allGames} />}
+      {filteredGames === false ? <AllGamesPage />: <FilteredGames allGames={allGames} />}
     </div>
   );
 }
