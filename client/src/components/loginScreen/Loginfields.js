@@ -31,7 +31,8 @@ function Loginfields(props) {
       });
       const response = await res.json();
       if( response === 1){
-        //user login
+        props.userData.name = userName;
+        props.userData.loggedIn = true;
         console.log("Access enabled!");
         props.setShowRegisterForm('user');
       } else {

@@ -16,20 +16,21 @@ function Registerfields(props) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
         });
-          const response = await res.json();
+          const response = await res.text();
           console.log(response);
-        if( response === 1){
+        if( response === "1"){
           setMessage("Registration was successful!");
 
           setTimeout(() =>{                     //redirection after successful registration in 4s
             props.setShowRegisterForm(0);
+            props.tabSetter("home");
           }, 4000);
 
           //console.log("Registration was successful!");
-        }else if( response === 0){
+        }else if( response === "0"){
           setMessage("Username or Email already exists!");
           //console.log("Username or Email already exists!");
-        } else if ( response === 2){
+        } else if ( response === "2"){
           setMessage("Given passwords are not the same!");
          // console.log("Given passwords are not the same!");
         } else {

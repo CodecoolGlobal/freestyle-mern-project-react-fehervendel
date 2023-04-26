@@ -1,6 +1,7 @@
 import "./css/Menu.css";
 import logo from "../../images/logo.png";
 import SignUpOrLogin from "./SignUpOrLogin";
+import LoggedInUser from "./LoggedInUser";
 
 function Menu(props) {
   const setShowTab = props.tabSetter;
@@ -13,11 +14,12 @@ function Menu(props) {
     props.setFilteredGames(false);
     props.setShowRegisterForm(0);
   }
-
+//props.userData.loggedIn
   return (
     <div id="header">
       {}
-      <SignUpOrLogin setShowRegisterForm={props.setShowRegisterForm} tabSetter={setShowTab}/>
+      
+      {props.userData.loggedIn ? <LoggedInUser userName={props.userData.name}/> : <SignUpOrLogin setShowRegisterForm={props.setShowRegisterForm} tabSetter={setShowTab}/> }
       <div id="container">
         <div id="logoContainer">
           <img src={logo} alt="Matrix Logo" id="logo" />

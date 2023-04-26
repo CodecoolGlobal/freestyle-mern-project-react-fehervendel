@@ -83,19 +83,19 @@ app.post("/api/userregistration", async (req, res) => {
           });
           user
             .save()
-            .then(() => res.status(200).json(1))
+            .then(() => res.status(200).send("1"))
             .catch((err) => res.status(400).json({ success: false }));
         }else{
-          res.status(401).json(0); 
+          res.status(401).send("0"); 
           //console.log("Username or Email already exists!");
         }
       }else{
-          res.status(400).json(2);
+          res.status(400).send("2");
          // console.log("Given passwords are not the same!");
       }    
         
   } else {
-    res.status(400).json(3);
+    res.status(400).send("3");
    // console.log("Fill the fields!");
   }
   });
