@@ -13,7 +13,7 @@ function FeaturedGame(props) {
           return prevState + 1;
         }
       });
-    }, 4000);
+    }, 3000);
 
     return () => {
       clearInterval(intervalId);

@@ -1,31 +1,32 @@
 #header {
   box-sizing: border-box;
-  width: 100vw;
-  height: 100px;
-  padding-left: calc((100vw - 505px) / 2);
+  max-width: 100vw;
+  height: 120px;
   background-color: rgb(41, 41, 41);
   color: rgb(148, 148, 148);
   font-family: "Motiva Sans", Sans-serif;
-  font-size: 14px;
+  font-size: 16px;
+  cursor: default;
 }
 
 #container {
+  padding-left: calc((100vw - 555px) / 2);
   height: 50px;
-  width: 505px;
+  width: 555px;
   align-items: center;
   display: grid;
   column-gap: 0px;
-  grid-template-columns: 170px 335px;
+  grid-template-columns: 220px 335px;
 }
 #logoContainer {
-  width: 130px;
+  width: 220px;
   display: inline-block;
   height: 50px;
   align-items: center;
   text-align: left;
   display: grid;
   column-gap: 0px;
-  grid-template-columns: 50px 80px;
+  grid-template-columns: 50px 120px;
 }
 #menuGridContainer {
   width: 335px;
@@ -39,4 +40,19 @@
 
 #logo {
   width: 50px;
+}
+#logoText {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+#menuGridContainer div:hover,
+#logoContainer:hover {
+  color: rgb(217, 250, 236);
+  text-shadow: 3px 3px 6px rgba(217, 250, 236, 0.327);
+}
+
+.clicked {
+  color: rgb(217, 250, 236);
+  text-shadow: 3px 3px 6px rgba(217, 250, 236, 0.327);
 }

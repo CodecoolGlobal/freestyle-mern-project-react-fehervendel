@@ -6,6 +6,7 @@
   display: grid;
   row-gap: 20px;
   grid-template-columns: 1fr;
+  cursor: default;
 }
 
 #storeGameContainer {
@@ -26,7 +27,7 @@
 }
 
 #storeGameContainer:hover {
-transform: scale(1.08);
+  transform: scale(1.08);
 }
 
 #storeBackGroundImage {

@@ -14,11 +14,11 @@ function App() {
   const [showTab, setShowTab] = useState("home");
   const [filteredGames, setFilteredGames] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState({
-    name:'',
+    name: "",
     library: [],
     cart: [],
-    email:'',
-    loggedIn: false
+    email: "",
+    loggedIn: false,
   });
   const [renderSelectedGame, setRenderSelectedGame] = useState(false);
 
@@ -51,12 +51,44 @@ function App() {
 
   return (
     <div className="App">
-      <Menu setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab} setFilteredGames={setFilteredGames} userData={loggedInUser} loginSetter={setLoggedInUser} setRenderSelectedGame={setRenderSelectedGame} renderSelectedGame={renderSelectedGame}/>
-      {showRegisterForm === "register" ? <Registerfields setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab}/> : <></>}
-      {showRegisterForm === "login" ? <Loginfields setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab} userDataSetter={setLoggedInUser}userData={loggedInUser}/> : <></>}
-      {showTab === "user" ? <UserProfile userData={loggedInUser}/> : <></>}
+      <Menu
+        setShowRegisterForm={setShowRegisterForm}
+        tabSetter={setShowTab}
+        setFilteredGames={setFilteredGames}
+        userData={loggedInUser}
+        loginSetter={setLoggedInUser}
+        setRenderSelectedGame={setRenderSelectedGame}
+        renderSelectedGame={renderSelectedGame}
+        showTab={showTab}
+      />
+      {showRegisterForm === "register" ? (
+        <Registerfields setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab} />
+      ) : (
+        <></>
+      )}
+      {showRegisterForm === "login" ? (
+        <Loginfields
+          setShowRegisterForm={setShowRegisterForm}
+          tabSetter={setShowTab}
+          userDataSetter={setLoggedInUser}
+          userData={loggedInUser}
+        />
+      ) : (
+        <></>
+      )}
+      {showTab === "user" ? <UserProfile userData={loggedInUser} /> : <></>}
       {showTab === "home" ? <Home featuredGames={featuredGames} /> : <></>}
-      {showTab === "store" ? <Store filteredGames={filteredGames} setFilteredGames={setFilteredGames} allGames={allGames} setRenderSelectedGame={setRenderSelectedGame} renderSelectedGame={renderSelectedGame}/> : <></>}
+      {showTab === "store" ? (
+        <Store
+          filteredGames={filteredGames}
+          setFilteredGames={setFilteredGames}
+          allGames={allGames}
+          setRenderSelectedGame={setRenderSelectedGame}
+          renderSelectedGame={renderSelectedGame}
+        />
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

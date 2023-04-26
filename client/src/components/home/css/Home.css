@@ -1,8 +1,30 @@
 #homeTitle {
+  height: 50px;
   margin-top: 10px;
   font-size: 30px;
   font-weight: 600;
-  color: rgb(148, 148, 148);
+  color: rgb(217, 250, 236);
   font-family: "Motiva Sans", Sans-serif;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  cursor: default;
+}
+
+#advertisementImage {
+  width: 1015px;
+  height: 300px;
+  object-fit: cover;
+}
+#advertisementText {
+  box-sizing: border-box;
+  position: absolute;
+  top: 180px;
+  margin-left: calc((100vw - 1015px) / 2);
+  padding-top: 10px;
+  padding-right: 30px;
+  width: 1015px;
+  height: 300px;
+  color: rgb(217, 250, 236);
+  font-size: 60px;
+  text-align: right;
+  text-shadow: 4px 4px 3px rgb(0, 0, 0);
 }

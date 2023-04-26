@@ -2,10 +2,10 @@
   margin-top: 30px;
   box-sizing: border-box;
   width: 1015px;
-  height: 350px;
+  height: 400px;
   display: grid;
   column-gap: 5px;
-  grid-template-columns: 550px 1fr;
+  grid-template-columns: 600px 1fr;
   background-color: rgb(41, 41, 41);
   color: rgb(148, 148, 148);
   font-family: "Motiva Sans", Sans-serif;
@@ -16,6 +16,7 @@
   border-width: 1px;
   border-radius: 4px;
   transition: transform 0.2s ease-in-out;
+  cursor: default;
 }
 
 #gameContainer:hover {
@@ -23,11 +24,9 @@
 }
 
 #backGroundImage {
-  margin-top: 25px;
-  margin-left: 50px;
   box-sizing: border-box;
-  height: 298px;
-  width: 500px;
+  height: 398px;
+  width: 600px;
   object-fit: cover;
   border-style: solid;
   border-color: rgba(0, 0, 0, 0);
@@ -35,7 +34,6 @@
   border-radius: 4px;
 }
 #gameContainerSecondColumn {
-  margin-top: 25px;
   box-sizing: border-box;
   display: grid;
   height: 300px;
@@ -50,6 +48,7 @@
   column-gap: 5px;
   row-gap: 5px;
   grid-template-columns: 200px 200px;
+  margin-bottom: 10px;
 }
 
 .screenshot {
@@ -60,8 +59,10 @@
 }
 
 #mainPageGameName {
+  height: 100px;
+  line-height: 50px;
   box-sizing: border-box;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 600;
 }
 
