@@ -13,6 +13,7 @@ function Menu(props) {
     setShowTab("store");
     props.setFilteredGames(false);
     props.setShowRegisterForm(0);
+    props.setRenderSelectedGame(false);
   }
 //props.userData.loggedIn
   return (
