@@ -28,6 +28,16 @@ app.get("/api/games", async (req, res) => {
   }
 });
 
+app.get("/api/allgames", async (req, res) => {
+  try {
+    const games = await Game.find({});
+    res.status(200).json(games);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("All games fetch failed");
+  }
+});
+
 app.post("/api/userlogin", async (req, res) => {
   try {
     const userName = req.body.userName;
