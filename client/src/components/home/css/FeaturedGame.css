@@ -15,8 +15,9 @@
   border-color: black;
   border-width: 1px;
   border-radius: 4px;
+  transition: transform 0.2s ease-in-out;
 }
-
+#gameContainer:hover {   transform: scale(1.04); }
 #backGroundImage {
   margin-top: 25px;
   margin-left: 50px;

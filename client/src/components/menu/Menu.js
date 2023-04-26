@@ -11,6 +11,7 @@ function Menu(props) {
   function storeClickHandler() {
     setShowTab("store");
     props.setFilteredGames(false);
+    props.setShowRegisterForm(0);
   }
 
   return (
