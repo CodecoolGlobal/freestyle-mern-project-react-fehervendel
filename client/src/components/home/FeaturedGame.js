@@ -1,27 +1,38 @@
 import "./css/FeaturedGame.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function FeaturedGame(props) {
   const setCounter = props.setCounter;
+  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCounter((prevState) => {
-        if (prevState === 19) {
-          return 0;
-        } else {
-          return prevState + 1;
-        }
-      });
-    }, 3000);
+    if (!hovered) {
+      const intervalId = setInterval(() => {
+        setCounter((prevState) => {
+          if (prevState === 19) {
+            return 0;
+          } else {
+            return prevState + 1;
+          }
+        });
+      }, 3000);
+      return () => {
+        clearInterval(intervalId);
+      };
+    }
+  }, [hovered]);
 
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
+  function handleMouseOver() {
+    console.log("hovered");
+    setHovered(true);
+  }
+  function handleMouseOut() {
+    console.log("not hovered");
+    setHovered(false);
+  }
 
   return (
-    <div id="gameContainer">
+    <div id="gameContainer" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
       <img src={props.game.background_image} id="backGroundImage"></img>
       <div id="gameContainerSecondColumn">
         <div id="mainPageGameName">{props.game.name}</div>
