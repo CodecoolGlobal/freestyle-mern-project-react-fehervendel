@@ -30,7 +30,15 @@ function Loginfields(props) {
         headers: { "Content-type": "application/json; charset=UTF-8" },
       });
       const response = await res.json();
-      console.log(response);
+      if( response === 1){
+        //user login
+        console.log("Access enabled!");
+        props.setShowRegisterForm('user');
+      } else {
+        //denying user entry
+        console.log("Access denied!");
+      }
+      
     } catch (error) {
       console.error(error);
     }

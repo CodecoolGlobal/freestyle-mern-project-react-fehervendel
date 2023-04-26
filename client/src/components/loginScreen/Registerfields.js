@@ -5,23 +5,40 @@ function Registerfields(props) {
   const [userPassword, setUserPassword] = useState("");
   const [userEmail, setEmail] = useState("");
   const [userPasswordAgain, setUserPasswordAgain] = useState("");
+  const [message, setMessage] = useState("");
 
-  function registerUser(e) {
+ async function registerUser(e) {
     e.preventDefault();
     const data = { userName, userPassword, userPasswordAgain, userEmail };
-    fetch("http://localhost:3001/api/data", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    props.setShowRegisterForm(0);
+    try{
+        const res = await fetch("http://localhost:3001/api/userregistration", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+        });
+          const response = await res.json();
+        if( response === 1){
+          setMessage("Registration was successful!");
+
+          setTimeout(() =>{                     //redirection after successful registration in 4s
+            props.setShowRegisterForm(0);
+          }, 4000);
+
+          //console.log("Registration was successful!");
+        }else if( response === 0){
+          setMessage("Username or Email already exists!");
+          //console.log("Username or Email already exists!");
+        } else if ( response === 2){
+          setMessage("Given passwords are not the same!");
+         // console.log("Given passwords are not the same!");
+        } else {
+          setMessage("Fill the fields!");
+         // console.log("Fill the fields!");
+        }
+    } catch(error){
+          console.error(error);
+    } 
+          //
   }
 
   function back() {
@@ -63,6 +80,7 @@ function Registerfields(props) {
       <button type="button" onClick={back}>
         Back
       </button>
+      <div>{message && message}</div>
     </div>
   );
 }
