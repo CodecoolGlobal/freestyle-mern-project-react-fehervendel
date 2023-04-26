@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import FilteredGame from "./AllGamesPage";
+import SelectedGame from "./SelectedGame";
 
 function FilteredGames({ searchFor }) {
   const [filteredGames, setFilteredGames] = useState([]);
+  const [selectedGame, setSelectedGame] = useState({});
+  const [renderSelectedGame, setRenderSelectedGame] = useState(false);
+
 
   useEffect(() => {
     async function getGames() {
@@ -28,16 +32,22 @@ function FilteredGames({ searchFor }) {
   }, [searchFor])
 
 
+  function selectGame(game) {
+    setRenderSelectedGame(true);
+    setSelectedGame(game);
+  }
+
   return (
     <div id="storeGames">
-      {filteredGames.map((game) => 
-        <div id="storeGameContainer">
+      {renderSelectedGame === false ? filteredGames.map((game) => 
+        <div onClick={() => selectGame(game)} id="storeGameContainer">
         <img src={game.background_image} id="storeBackGroundImage"></img>
         <div id="storeGameName">{game.name}</div>
         <div id="storeGameRelease">{new Date(game.released).toLocaleDateString()}</div>
         <div id="storeGamePrice">Price ócsó€</div>
       </div>
-      )}
+      ) : <SelectedGame selectedGame={selectedGame}/>}
+      
     </div>
   )
 }

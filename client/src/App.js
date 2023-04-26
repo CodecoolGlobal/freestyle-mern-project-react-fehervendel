@@ -4,19 +4,21 @@ import Registerfields from "./components/loginScreen/Registerfields.js";
 import Loginfields from "./components/loginScreen/Loginfields.js";
 import Home from "./components/home/Home.js";
 import Store from "./components/store/Store.js";
+import UserProfile from "./components/home/UserProfile.js";
 import "./App.css";
 
 function App() {
   const [featuredGames, setFeaturedGames] = useState([]);
   const [allGames, setAllGames] = useState();
   const [showRegisterForm, setShowRegisterForm] = useState(0);
-  const [loginSelected, setloginSelected] = useState(false);
   const [showTab, setShowTab] = useState("home");
   const [filteredGames, setFilteredGames] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState({
     name: "",
     library: [],
     cart: [],
+    loggedIn: false,
+    email: "",
     loggedIn: false,
   });
 
@@ -66,7 +68,7 @@ function App() {
       ) : (
         <></>
       )}
-      {showRegisterForm === "user" ? <Home featuredGames={featuredGames} /> : <></>}
+      {showRegisterForm === "user" ? <div>{loggedInUser.name}</div> : <></>}
       {showTab === "home" ? <Home featuredGames={featuredGames} /> : <></>}
       {showTab === "store" ? (
         <Store filteredGames={filteredGames} setFilteredGames={setFilteredGames} allGames={allGames} />

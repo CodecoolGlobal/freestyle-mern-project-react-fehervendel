@@ -13,13 +13,14 @@ function Menu(props) {
     setShowTab("store");
     props.setFilteredGames(false);
     props.setShowRegisterForm(0);
+    props.setRenderSelectedGame(false);
   }
 //props.userData.loggedIn
   return (
     <div id="header">
       {}
       
-      {props.userData.loggedIn ? <LoggedInUser userName={props.userData.name} loginSetter={props.loginSetter}/> : <SignUpOrLogin setShowRegisterForm={props.setShowRegisterForm} tabSetter={setShowTab}/> }
+      {props.userData.loggedIn ? <LoggedInUser userName={props.userData.name} loginSetter={props.loginSetter} tabSetter={props.tabSetter}/> : <SignUpOrLogin setShowRegisterForm={props.setShowRegisterForm} tabSetter={props.tabSetter}/> }
       <div id="container">
         <div id="logoContainer">
           <img src={logo} alt="Matrix Logo" id="logo" />
