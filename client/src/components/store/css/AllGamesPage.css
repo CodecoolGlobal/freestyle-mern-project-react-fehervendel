@@ -22,7 +22,13 @@
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.103);
   border-width: 1px;
+  transition: transform 0.2s ease-in-out;
 }
+
+#storeGameContainer:hover {
+transform: scale(1.08);
+}
+
 #storeBackGroundImage {
   box-sizing: border-box;
   width: 100px;
