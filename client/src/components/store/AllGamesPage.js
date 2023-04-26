@@ -8,6 +8,8 @@ function AllGamesPage() {
     getGames();
   }, []);
 
+  
+
   async function getGames() {
     try {
       const res = await fetch("http://localhost:3001/api/games");
