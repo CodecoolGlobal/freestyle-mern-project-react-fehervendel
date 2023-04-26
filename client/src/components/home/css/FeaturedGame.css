@@ -65,11 +65,6 @@
   font-size: 28px;
   font-weight: 600;
 }
-
-/* #container {
-  height: 50px;
-  align-items: center;
-  display: grid;
-  column-gap: 0px;
-  grid-template-columns: 170px 300px;
-} */
+#featuredGamePrice {
+  font-size: 22px;
+}

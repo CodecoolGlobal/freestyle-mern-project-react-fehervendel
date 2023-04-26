@@ -42,7 +42,11 @@ function FeaturedGame(props) {
           <img src={props.game.short_screenshots[3].image} className="screenshot"></img>
           <img src={props.game.short_screenshots[4].image} className="screenshot"></img>
         </div>
-        <div>Price</div>
+        {props.game.price !== 0 ? (
+          <div id="featuredGamePrice">{props.game.price} €</div>
+        ) : (
+          <div id="featuredGamePrice">Free to Play</div>
+        )}
       </div>
     </div>
   );

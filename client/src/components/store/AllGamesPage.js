@@ -10,8 +10,6 @@ function AllGamesPage(props) {
     getGames();
   }, []);
 
-  
-
   async function getGames() {
     try {
       const res = await fetch("http://localhost:3001/api/games");
@@ -37,13 +35,21 @@ function AllGamesPage(props) {
           <img src={game.background_image} id="storeBackGroundImage"></img>
           <div id="storeGameName">{game.name}</div>
           <div id="storeGameRelease">{releaseDate}</div>
-          <div id="storeGamePrice">Price €</div>
+          {game.price !== 0 ? (
+            <div id="storeGamePrice">{game.price} €</div>
+          ) : (
+            <div id="storeGamePrice">Free to Play</div>
+          )}
         </div>
       );
     });
   }
 
-  return <div id="storeGames">{props.renderSelectedGame === false ? allGamesToRender : <SelectedGame selectedGame={selectedGame}/>}</div>;
+  return (
+    <div id="storeGames">
+      {props.renderSelectedGame === false ? allGamesToRender : <SelectedGame selectedGame={selectedGame} />}
+    </div>
+  );
 }
 
 export default AllGamesPage;
