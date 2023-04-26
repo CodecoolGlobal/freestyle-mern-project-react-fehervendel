@@ -44,8 +44,8 @@ function App() {
   return (
     <div className="App">
       <Menu setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab} setFilteredGames={setFilteredGames}/>
-      {showRegisterForm === "register" ? <Registerfields setShowRegisterForm={setShowRegisterForm} /> : <></>}
-      {showRegisterForm === "login" ? <Loginfields setShowRegisterForm={setShowRegisterForm} /> : <></>}
+      {showRegisterForm === "register" ? <Registerfields setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab}/> : <></>}
+      {showRegisterForm === "login" ? <Loginfields setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab}/> : <></>}
       {showRegisterForm === "user" ? <div>component_placeholder</div> : <></>}
       {showTab === "home" ? <Home featuredGames={featuredGames} /> : <></>}
       {showTab === "store" ? <Store filteredGames={filteredGames} setFilteredGames={setFilteredGames} allGames={allGames} /> : <></>}

@@ -17,6 +17,7 @@ function Registerfields(props) {
             body: JSON.stringify(data),
         });
           const response = await res.json();
+          console.log(response);
         if( response === 1){
           setMessage("Registration was successful!");
 
@@ -43,6 +44,7 @@ function Registerfields(props) {
 
   function back() {
     props.setShowRegisterForm(0);
+    props.tabSetter("home");
   }
 
   return (

@@ -6,6 +6,7 @@ function Menu(props) {
   const setShowTab = props.tabSetter;
   function shadowClickHandler() {
     setShowTab("home");
+    props.setShowRegisterForm(0);
   }
   function storeClickHandler() {
     setShowTab("store");
@@ -15,7 +16,7 @@ function Menu(props) {
   return (
     <div id="header">
       {}
-      <SignUpOrLogin setShowRegisterForm={props.setShowRegisterForm} />
+      <SignUpOrLogin setShowRegisterForm={props.setShowRegisterForm} tabSetter={setShowTab}/>
       <div id="container">
         <div id="logoContainer">
           <img src={logo} alt="Matrix Logo" id="logo" />

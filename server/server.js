@@ -67,6 +67,7 @@ app.post("/api/userregistration", async (req, res) => {
   const userNameCheck = await User.find({userName: userName});
   const userEmailCheck = await User.find({userEmail: userEmail});
 
+  
     if(userName.length > 0 && userPassword.length > 0 && userEmail.length > 0 && userPasswordAgain.length > 0){
 
       if(userPassword === userPasswordAgain){
@@ -83,7 +84,7 @@ app.post("/api/userregistration", async (req, res) => {
           user
             .save()
             .then(() => res.status(200).json(1))
-            .catch((err) => res.status(400).json({ success: true }));
+            .catch((err) => res.status(400).json({ success: false }));
         }else{
           res.status(401).json(0); 
           //console.log("Username or Email already exists!");

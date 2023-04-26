@@ -4,10 +4,12 @@ import "./css/SignUpOrLogin.css";
 function SignUpOrLogin(props) {
   function signUp() {
     props.setShowRegisterForm("register");
+    props.tabSetter("hide");
   }
 
   function logIn() {
     props.setShowRegisterForm("login");
+    props.tabSetter("hide");
   }
 
   return (
