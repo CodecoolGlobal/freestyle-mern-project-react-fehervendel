@@ -27,11 +27,17 @@ function FilteredGames({ searchFor }) {
     getGames();
   }, [searchFor])
 
+
   return (
-    <div>
-      <div>{filteredGames.map((game) => 
-        <div>{game.name}</div>
-      )}</div>
+    <div id="storeGames">
+      {filteredGames.map((game) => 
+        <div id="storeGameContainer">
+        <img src={game.background_image} id="storeBackGroundImage"></img>
+        <div id="storeGameName">{game.name}</div>
+        <div id="storeGameRelease">{new Date(game.released).toLocaleDateString()}</div>
+        <div id="storeGamePrice">Price ócsó€</div>
+      </div>
+      )}
     </div>
   )
 }
