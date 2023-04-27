@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function SearchBar({setFilteredGames, setSearchFor}) {
+function SearchBar({ setFilteredGames, setSearchFor }) {
   const [searchText, setSearchText] = useState("");
   const [inputValue, setInputValue] = useState("");
 
@@ -10,23 +10,28 @@ function SearchBar({setFilteredGames, setSearchFor}) {
     setInputValue("");
   }
 
-  function search(e){
+  function search(e) {
     e.preventDefault();
     setInputValue(e.target.value);
     setSearchText(e.target.value);
+  }
 
+  function handleKeyDown(e) {
+    if (e.key === "Enter") {
+      switchToFilteredGames();
     }
-
-    function handleKeyDown(e) {
-      if(e.key === "Enter") {
-        switchToFilteredGames();
-    }
-    
   }
 
   return (
     <div>
-      <input id="searchBar" type="text" placeholder="Search" onKeyDown={(e) =>handleKeyDown(e)} onChange={(e) => search(e)} value={inputValue}></input>
+      <input
+        id="searchBar"
+        type="text"
+        placeholder="Search"
+        onKeyDown={(e) => handleKeyDown(e)}
+        onChange={(e) => search(e)}
+        value={inputValue}
+      ></input>
       <button onClick={() => switchToFilteredGames()}>Search</button>
     </div>
   );
