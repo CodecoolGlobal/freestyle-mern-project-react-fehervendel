@@ -62,7 +62,7 @@ function App() {
         showTab={showTab}
       />
       {showRegisterForm === "register" ? (
-        <Registerfields setShowRegisterForm={setShowRegisterForm} tabSetter={setShowTab} />
+        <Registerfields setShowRegisterForm={setShowRegisterForm} userDataSetter={setLoggedInUser} tabSetter={setShowTab} />
       ) : (
         <></>
       )}
@@ -76,7 +76,7 @@ function App() {
       ) : (
         <></>
       )}
-      {showTab === "user" ? <UserProfile userData={loggedInUser} userDataSetter={setLoggedInUser} /> : <></>}
+      {showTab === "user" ? <UserProfile userData={loggedInUser} userSetter={setLoggedInUser} /> : <></>}
       {showTab === "home" ? <Home featuredGames={featuredGames} /> : <></>}
       {showTab === "store" ? (
         <Store

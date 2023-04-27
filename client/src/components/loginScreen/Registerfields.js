@@ -19,12 +19,21 @@ function Registerfields(props) {
           const response = await res.text();
           console.log(response);
         if( response === "1"){
-          setMessage("Registration was successful!");
-
-          setTimeout(() =>{                     //redirection after successful registration in 4s
+                                     
             props.setShowRegisterForm(0);
+            props.userDataSetter(prevState => ({
+              ...prevState, name: userName
+            }));
+    
+            props.userDataSetter(prevState => ({
+              ...prevState, loggedIn: true
+            }));
+            console.log(response);
+            props.userDataSetter(prevState => ({
+              ...prevState, email: response.email
+            }));
             props.tabSetter("home");
-          }, 4000);
+         
 
           //console.log("Registration was successful!");
         }else if( response === "0"){
