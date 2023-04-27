@@ -7,7 +7,6 @@ function FilteredGames({ searchFor }) {
   const [selectedGame, setSelectedGame] = useState({});
   const [renderSelectedGame, setRenderSelectedGame] = useState(false);
 
-
   useEffect(() => {
     async function getGames() {
       try {
@@ -22,15 +21,14 @@ function FilteredGames({ searchFor }) {
         //   })
         //   return found;
         // })
-        const result = response.filter((game) => game.name.toLowerCase().includes(searchFor.toLowerCase()));        
+        const result = response.filter((game) => game.name.toLowerCase().includes(searchFor.toLowerCase()));
         setFilteredGames(result);
       } catch (error) {
         console.log(`Fetching games failed: ${error}`);
       }
     }
     getGames();
-  }, [searchFor])
-
+  }, [searchFor]);
 
   function selectGame(game) {
     setRenderSelectedGame(true);
@@ -38,18 +36,23 @@ function FilteredGames({ searchFor }) {
   }
 
   return (
-    <div id="storeGames">
-      {renderSelectedGame === false ? filteredGames.map((game) => 
-        <div onClick={() => selectGame(game)} id="storeGameContainer">
-        <img src={game.background_image} id="storeBackGroundImage"></img>
-        <div id="storeGameName">{game.name}</div>
-        <div id="storeGameRelease">{new Date(game.released).toLocaleDateString()}</div>
-        <div id="storeGamePrice">Price ócsó€</div>
-      </div>
-      ) : <SelectedGame selectedGame={selectedGame}/>}
-      
+    <div>
+      {renderSelectedGame === false ? (
+        <div id="storeGames">
+          {filteredGames.map((game) => (
+            <div onClick={() => selectGame(game)} id="storeGameContainer">
+              <img src={game.background_image} id="storeBackGroundImage" />
+              <div id="storeGameName">{game.name}</div>
+              <div id="storeGameRelease">{new Date(game.released).toLocaleDateString()}</div>
+              <div id="storeGamePrice">{game.price}€</div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <SelectedGame selectedGame={selectedGame} />
+      )}
     </div>
-  )
+  );
 }
 
 export default FilteredGames;

@@ -35,7 +35,7 @@ function FeaturedGame(props) {
     <div id="gameContainer" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
       <img src={props.game.background_image} id="backGroundImage"></img>
       <div id="gameContainerSecondColumn">
-        <div id="mainPageGameName">{props.game.name}</div>
+        <div id="featuredGameName">{props.game.name}</div>
         <div id="screenshotsContainer">
           <img src={props.game.short_screenshots[1].image} className="screenshot"></img>
           <img src={props.game.short_screenshots[2].image} className="screenshot"></img>

@@ -8,7 +8,11 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   cursor: default;
 }
-
+#advertisementImageContainer {
+  margin-left: calc((100vw - 1015px) / 2);
+  width: 1015px;
+  height: 300px;
+}
 #advertisementImage {
   width: 1015px;
   height: 300px;

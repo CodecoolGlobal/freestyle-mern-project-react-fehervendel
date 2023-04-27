@@ -46,8 +46,12 @@ function AllGamesPage(props) {
   }
 
   return (
-    <div id="storeGames">
-      {props.renderSelectedGame === false ? allGamesToRender : <SelectedGame selectedGame={selectedGame} />}
+    <div>
+      {props.renderSelectedGame === false ? (
+        <div id="storeGames">{allGamesToRender}</div>
+      ) : (
+        <SelectedGame selectedGame={selectedGame} />
+      )}
     </div>
   );
 }
