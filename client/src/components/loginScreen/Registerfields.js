@@ -10,15 +10,17 @@ function Registerfields(props) {
  async function registerUser(e) {
     e.preventDefault();
     const data = { userName, userPassword, userPasswordAgain, userEmail };
+    console.log(userPassword)
+    console.log(userPassword.length)
     try{
         const res = await fetch("http://localhost:3001/api/userregistration", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
         });
-          const response = await res.text();
+          const response = await res.json();
           console.log(response);
-        if( response === "1"){
+        if( response === 1){
                                      
             props.setShowRegisterForm(0);
             props.userDataSetter(prevState => ({
@@ -28,7 +30,7 @@ function Registerfields(props) {
             props.userDataSetter(prevState => ({
               ...prevState, loggedIn: true
             }));
-            console.log(response);
+            
             props.userDataSetter(prevState => ({
               ...prevState, email: response.email
             }));
@@ -36,10 +38,10 @@ function Registerfields(props) {
          
 
           //console.log("Registration was successful!");
-        }else if( response === "0"){
+        }else if( response === 0){
           setMessage("Username or Email already exists!");
           //console.log("Username or Email already exists!");
-        } else if ( response === "2"){
+        } else if ( response === 2){
           setMessage("Given passwords are not the same!");
          // console.log("Given passwords are not the same!");
         } else {

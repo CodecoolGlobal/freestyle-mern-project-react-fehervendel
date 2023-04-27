@@ -94,15 +94,18 @@ app.post("/api/userlogin", async (req, res) => {
 app.post("/api/userregistration", async (req, res) => {
   //+feature pattern check for inputfields email->@
   const userName = req.body.userName;
-  const userPassword = crypto.createHash("sha256").update(req.body.userPassword).digest("hex");
+  let userPassword = req.body.userPassword;
   const userEmail = req.body.userEmail;
-  const userPasswordAgain = crypto.createHash("sha256").update(req.body.userPasswordAgain).digest("hex");
+  let userPasswordAgain = req.body.userPasswordAgain;
   const date = Date.now();
   const userNameCheck = await User.find({ userName: userName });
   const userEmailCheck = await User.find({ userEmail: userEmail });
-
+  
   if (userName.length > 0 && userPassword.length > 0 && userEmail.length > 0 && userPasswordAgain.length > 0) {
+   
     if (userPassword === userPasswordAgain) {
+      userPassword = crypto.createHash("sha256").update(req.body.userPassword).digest("hex");
+      userPasswordAgain = crypto.createHash("sha256").update(req.body.userPasswordAgain).digest("hex");
       if (userNameCheck.length === 0 && userEmailCheck.length === 0) {
         const user = new User({
           userName,
@@ -113,18 +116,18 @@ app.post("/api/userregistration", async (req, res) => {
         });
         user
           .save()
-          .then(() => res.status(200).send("1"))
+          .then(() => res.status(200).json(1))
           .catch((err) => res.status(400).json({ success: false }));
       } else {
-        res.status(401).send("0");
+        res.status(401).json(0);
         //console.log("Username or Email already exists!");
       }
     } else {
-      res.status(400).send("2");
+      res.status(400).json(2);
       // console.log("Given passwords are not the same!");
     }
   } else {
-    res.status(400).send("3");
+    res.status(400).json(3);
     // console.log("Fill the fields!");
   }
 });
