@@ -116,7 +116,7 @@ const updateGamesWithPrice = async () => {
     await game.save();
   });
 };
-updateGamesWithPrice();
+//updateGamesWithPrice();
 
 function generatePriceBasedOnRatingAndReleaseDate(releaseDate, rating, tags) {
   const yearsUntilToday = Math.round(new Date("2023-04-28") / 31536000000);
