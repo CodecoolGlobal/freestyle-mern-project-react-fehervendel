@@ -17,6 +17,27 @@ function Menu(props) {
     props.setShowRegisterForm(0);
     props.setRenderSelectedGame(false);
   }
+
+  function libraryClickHandler() {
+    setShowTab("library");
+    props.setFilteredGames(false);
+    props.setShowRegisterForm(0);
+    props.setRenderSelectedGame(false);
+  }
+
+  function aboutClickHandler() {
+    setShowTab("about");
+    props.setFilteredGames(false);
+    props.setShowRegisterForm(0);
+    props.setRenderSelectedGame(false);
+  }
+
+  function supportClickHandler() {
+    setShowTab("support");
+    props.setFilteredGames(false);
+    props.setShowRegisterForm(0);
+    props.setRenderSelectedGame(false);
+  }
   //props.userData.loggedIn
   return (
     <div id="header">
@@ -39,9 +60,24 @@ function Menu(props) {
           >
             STORE
           </div>
-          <div>LIBRARY</div>
-          <div>ABOUT</div>
-          <div>SUPPORT</div>
+          <div
+            className={showTab !== undefined && showTab === "library" ? "clicked" : "notClicked"}
+            onClick={libraryClickHandler}
+          >
+            LIBRARY
+          </div>
+          <div
+            className={showTab !== undefined && showTab === "about" ? "clicked" : "notClicked"}
+            onClick={aboutClickHandler}
+          >
+            ABOUT
+          </div>
+          <div
+            className={showTab !== undefined && showTab === "support" ? "clicked" : "notClicked"}
+            onClick={supportClickHandler}
+          >
+            SUPPORT
+          </div>
         </div>
       </div>
     </div>
