@@ -76,7 +76,7 @@ function App() {
       ) : (
         <></>
       )}
-      {showTab === "user" ? <UserProfile userData={loggedInUser} /> : <></>}
+      {showTab === "user" ? <UserProfile userData={loggedInUser} userDataSetter={setLoggedInUser} /> : <></>}
       {showTab === "home" ? <Home featuredGames={featuredGames} /> : <></>}
       {showTab === "store" ? (
         <Store

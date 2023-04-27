@@ -39,6 +39,25 @@ app.get("/api/allgames", async (req, res) => {
   }
 });
 
+app.patch("/api/usernamechange", async (req, res) => {
+    try{
+      const userName = req.body.userName;
+      const currentName = req.body.currentName;
+      const userNameCheck = await User.find({ userName: userName });
+      //console.log(userNameCheck);
+      if(userNameCheck.length === 0){
+        await User.findOneAndUpdate({ userName: currentName }, {$set: { userName: userName}});
+        res.status(200).send("NAME CHANGED OK");
+      } else {
+        res.status(400).send("CANT CHANGE NAME");
+      }
+      
+    }catch(error){
+      console.log(error);
+      res.status(500).send("Something went wrong");
+    }
+});
+
 app.post("/api/userlogin", async (req, res) => {
   try {
     const userName = req.body.userName;
@@ -146,7 +165,8 @@ function generatePriceBasedOnRatingAndReleaseDate(releaseDate, rating, tags) {
 
 //(userName !== userNameCheck[0].userName && userEmail !== userEmailCheck[0].userEmail)
 mongoose
-  .connect("mongodb+srv://lorikpatrik:7a8r4K01@cluster0.bu8nsrn.mongodb.net/project")
+ // .connect("mongodb+srv://lorikpatrik:7a8r4K01@cluster0.bu8nsrn.mongodb.net/project")
+  .connect("mongodb://127.0.0.1:27017/project")
   .then(() => {
     console.log("MongoDB connection was successful.");
     app.listen(3001, () => console.log("Server started on port 3001"));
