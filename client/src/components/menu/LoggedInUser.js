@@ -7,6 +7,7 @@ function LoggedInUser(props) {
       cart: [],
       loggedIn: false
     });
+    props.tabSetter("home");
   }
 
   function showProfile(){

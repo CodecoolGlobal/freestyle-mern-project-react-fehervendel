@@ -30,6 +30,7 @@ function Loginfields(props) {
         headers: { "Content-type": "application/json; charset=UTF-8" },
       });
       const response = await res.json();
+      
       if( response.access === 1){
        
         props.userDataSetter(prevState => ({
@@ -39,7 +40,7 @@ function Loginfields(props) {
         props.userDataSetter(prevState => ({
           ...prevState, loggedIn: true
         }));
-        console.log(response);
+        
         props.userDataSetter(prevState => ({
           ...prevState, email: response.email
         }));

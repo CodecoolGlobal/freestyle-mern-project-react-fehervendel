@@ -10,8 +10,7 @@ function Registerfields(props) {
  async function registerUser(e) {
     e.preventDefault();
     const data = { userName, userPassword, userPasswordAgain, userEmail };
-    console.log(userPassword)
-    console.log(userPassword.length)
+   
     try{
         const res = await fetch("http://localhost:3001/api/userregistration", {
             method: "POST",
@@ -19,7 +18,7 @@ function Registerfields(props) {
             body: JSON.stringify(data),
         });
           const response = await res.json();
-          console.log(response);
+          
         if( response === 1){
                                      
             props.setShowRegisterForm(0);
@@ -51,7 +50,7 @@ function Registerfields(props) {
     } catch(error){
           console.error(error);
     } 
-          //
+         
   }
 
   function back() {

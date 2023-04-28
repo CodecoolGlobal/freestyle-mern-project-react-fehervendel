@@ -58,6 +58,34 @@ function UserProfile(props) {
     }
   }
 
+  async function deleteMe(e){
+    e.preventDefault();
+    const data = { userName: props.userData.name };
+    try {
+      const res = await fetch("http://localhost:3001/api/userdelete", {
+        method: "DELETE",
+        body: JSON.stringify(data),
+        headers: { "Content-type": "application/json; charset=UTF-8" },
+      });
+      const response = await res.json();
+
+      if(response === 1){
+        props.userDataSetter({
+          name:'',
+        library: [],
+        cart: [],
+        loggedIn: false
+      });
+        props.tabSetter("home");
+        
+        console.log("User has been deleted successfully!");
+      }
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <div>
       <div>Welcome to UserProfile Component!</div>
@@ -75,8 +103,10 @@ function UserProfile(props) {
         <button type="button" onClick={changeUserEmail}>
           Change
         </button>
+        
         <div>{messageEmail}</div>
       </div>
+      <button type="button" onClick={deleteMe}>Delete my profile</button>
     </div>
   );
 }

@@ -39,6 +39,22 @@ app.get("/api/allgames", async (req, res) => {
   }
 });
 
+app.delete("/api/userdelete", async (req, res) => {
+  
+  try{
+    const userName = req.body.userName;
+    const deletedDocument = await User.findOneAndDelete({ userName: userName });
+    console.log(deletedDocument);
+        res.status(200).json(1);
+      
+  }catch (error){
+    res.status(500).send("Could not delete user!");
+    
+    console.error(error);
+    res.status(500).send("Something went wrong");
+  }
+})
+
 app.patch("/api/usernamechange", async (req, res) => {
   try {
     const userName = req.body.userName;
@@ -79,7 +95,7 @@ app.post("/api/userlogin", async (req, res) => {
     const userName = req.body.userName;
     const userPassword = crypto.createHash("sha256").update(req.body.userPassword).digest("hex");
     const user = await User.find({ userName: userName });
-
+    console.log(user[0].userEmail);
     if (user.length > 0 && user[0].userPassword === userPassword) {
       res.status(200).json({ access: 1, email: user[0].userEmail });
     } else {
