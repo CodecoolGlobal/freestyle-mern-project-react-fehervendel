@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import User from "./model/user.js";
 import Game from "./model/game.js";
-import gameSchema from "./model/game.js";
+//import gameSchema from "./model/game.js";
 import crypto from "crypto";
 
 const app = express();
@@ -40,20 +40,18 @@ app.get("/api/allgames", async (req, res) => {
 });
 
 app.delete("/api/userdelete", async (req, res) => {
-  
-  try{
+  try {
     const userName = req.body.userName;
     const deletedDocument = await User.findOneAndDelete({ userName: userName });
     console.log(deletedDocument);
-        res.status(200).json(1);
-      
-  }catch (error){
+    res.status(200).json(1);
+  } catch (error) {
     res.status(500).send("Could not delete user!");
-    
+
     console.error(error);
     res.status(500).send("Something went wrong");
   }
-})
+});
 
 app.patch("/api/usernamechange", async (req, res) => {
   try {
@@ -73,6 +71,8 @@ app.patch("/api/usernamechange", async (req, res) => {
   }
 });
 
+//regex - regular expression
+//token a bejelentkezés után - külsős package jwt token (npm i jwt?)
 app.patch("/api/useremailchange", async (req, res) => {
   try {
     const userEmail = req.body.userEmail;
@@ -116,9 +116,8 @@ app.post("/api/userregistration", async (req, res) => {
   const date = Date.now();
   const userNameCheck = await User.find({ userName: userName });
   const userEmailCheck = await User.find({ userEmail: userEmail });
-  
+
   if (userName.length > 0 && userPassword.length > 0 && userEmail.length > 0 && userPasswordAgain.length > 0) {
-   
     if (userPassword === userPasswordAgain) {
       userPassword = crypto.createHash("sha256").update(req.body.userPassword).digest("hex");
       userPasswordAgain = crypto.createHash("sha256").update(req.body.userPasswordAgain).digest("hex");
@@ -163,7 +162,7 @@ for (let i = 31; i < 61; i++) {
 }
 
 const updateGamesWithPrice = async () => {
-  let games = await gameSchema.find();
+  let games = await Game.find();
   games = games.map(async (game) => {
     const price = generatePriceBasedOnRatingAndReleaseDate(game.released, game.rating, game.tags);
     game.price = price;

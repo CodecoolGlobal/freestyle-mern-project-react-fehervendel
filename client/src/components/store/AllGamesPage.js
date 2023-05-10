@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./css/AllGamesPage.css";
 import SelectedGame from "./SelectedGame";
 
-function AllGamesPage(props) {
+function AllGamesPage({ renderSelectedGame, setRenderSelectedGame, gameInCartSetter, totalPriceSetter }) {
   const [allGames, setAllGames] = useState([]);
   const [selectedGame, setSelectedGame] = useState({});
 
@@ -14,7 +14,6 @@ function AllGamesPage(props) {
     try {
       const res = await fetch("http://localhost:3001/api/games");
       const response = await res.json();
-      console.log(response);
       setAllGames(response);
     } catch (error) {
       console.log(`Fetching games failed: ${error}`);
@@ -22,7 +21,7 @@ function AllGamesPage(props) {
   }
 
   function selectGame(game) {
-    props.setRenderSelectedGame(true);
+    setRenderSelectedGame(true);
     setSelectedGame(game);
   }
 
@@ -31,7 +30,7 @@ function AllGamesPage(props) {
     allGamesToRender = allGames.map((game, index) => {
       const releaseDate = new Date(game.released).toLocaleDateString();
       return (
-        <div onClick={() => selectGame(game)} id="storeGameContainer">
+        <div key={index} onClick={() => selectGame(game)} id="storeGameContainer">
           <img src={game.background_image} id="storeBackGroundImage"></img>
           <div id="storeGameName">{game.name}</div>
           <div id="storeGameRelease">{releaseDate}</div>
@@ -47,10 +46,14 @@ function AllGamesPage(props) {
 
   return (
     <div>
-      {props.renderSelectedGame === false ? (
+      {renderSelectedGame === false ? (
         <div id="storeGames">{allGamesToRender}</div>
       ) : (
-        <SelectedGame selectedGame={selectedGame} />
+        <SelectedGame
+          selectedGame={selectedGame}
+          gameInCartSetter={gameInCartSetter}
+          totalPriceSetter={totalPriceSetter}
+        />
       )}
     </div>
   );

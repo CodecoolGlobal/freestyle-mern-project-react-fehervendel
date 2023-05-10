@@ -38,6 +38,13 @@ function Menu(props) {
     props.setShowRegisterForm(0);
     props.setRenderSelectedGame(false);
   }
+
+  function cartClickHandler() {
+    setShowTab("cart");
+    props.setFilteredGames(false);
+    props.setShowRegisterForm(0);
+    props.setRenderSelectedGame(false);
+  }
   //props.userData.loggedIn
   return (
     <div id="header">
@@ -77,6 +84,12 @@ function Menu(props) {
             onClick={supportClickHandler}
           >
             SUPPORT
+          </div>
+          <div
+            className={showTab !== undefined && showTab === "cart" ? "clicked" : "notClicked"}
+            onClick={cartClickHandler}
+          >
+            CART
           </div>
         </div>
       </div>

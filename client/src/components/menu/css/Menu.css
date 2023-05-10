@@ -10,7 +10,7 @@
 }
 
 #container {
-  padding-left: calc((100vw - 555px) / 2);
+  padding-left: calc((100vw - 640px) / 2);
   height: 50px;
   width: 555px;
   align-items: center;
@@ -35,7 +35,7 @@
   align-items: center;
   display: grid;
   column-gap: 5px;
-  grid-template-columns: 80px 80px 80px 80px;
+  grid-template-columns: 80px 80px 80px 80px 80px;
 }
 
 #logo {

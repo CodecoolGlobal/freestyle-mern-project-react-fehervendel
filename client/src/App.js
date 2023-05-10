@@ -5,6 +5,7 @@ import Loginfields from "./components/loginScreen/Loginfields.js";
 import Home from "./components/home/Home.js";
 import Store from "./components/store/Store.js";
 import UserProfile from "./components/home/UserProfile.js";
+import ShoppingCart from "./components/cart/ShoppingCart.js";
 import "./App.css";
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
     loggedIn: false,
   });
   const [renderSelectedGame, setRenderSelectedGame] = useState(false);
+  const [gamesInShoppingCart, setGamesInShoppingCart] = useState([]);
+  const [totalPriceInCart, setTotalPriceInCart] = useState(0);
 
   useEffect(() => {
     getFirst20Games();
@@ -29,7 +32,6 @@ function App() {
     try {
       const res = await fetch("http://localhost:3001/api/games");
       const response = await res.json();
-      console.log(response);
       setFeaturedGames(response);
     } catch (error) {
       console.log(`Fetching games failed: ${error}`);
@@ -62,7 +64,11 @@ function App() {
         showTab={showTab}
       />
       {showRegisterForm === "register" ? (
-        <Registerfields setShowRegisterForm={setShowRegisterForm} userDataSetter={setLoggedInUser} tabSetter={setShowTab} />
+        <Registerfields
+          setShowRegisterForm={setShowRegisterForm}
+          userDataSetter={setLoggedInUser}
+          tabSetter={setShowTab}
+        />
       ) : (
         <></>
       )}
@@ -76,7 +82,11 @@ function App() {
       ) : (
         <></>
       )}
-      {showTab === "user" ? <UserProfile userData={loggedInUser} userDataSetter={setLoggedInUser} tabSetter={setShowTab}/> : <></>}
+      {showTab === "user" ? (
+        <UserProfile userData={loggedInUser} userDataSetter={setLoggedInUser} tabSetter={setShowTab} />
+      ) : (
+        <></>
+      )}
       {showTab === "home" ? <Home featuredGames={featuredGames} /> : <></>}
       {showTab === "store" ? (
         <Store
@@ -85,6 +95,17 @@ function App() {
           allGames={allGames}
           setRenderSelectedGame={setRenderSelectedGame}
           renderSelectedGame={renderSelectedGame}
+          gameInCartSetter={setGamesInShoppingCart}
+          totalPriceSetter={setTotalPriceInCart}
+        />
+      ) : (
+        <></>
+      )}
+      {showTab === "cart" ? (
+        <ShoppingCart
+          games={gamesInShoppingCart}
+          totalPrice={totalPriceInCart}
+          totalPriceSetter={setTotalPriceInCart}
         />
       ) : (
         <></>

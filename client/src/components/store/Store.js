@@ -4,15 +4,37 @@ import FilteredGames from "./FilteredGames";
 import AllGamesPage from "./AllGamesPage";
 import SearchBar from "./SearchBar";
 
-function Store(props) {
-  const allGames = props.allGames;
+function Store({
+  filteredGames,
+  setFilteredGames,
+  allGames,
+  renderSelectedGame,
+  setRenderSelectedGame,
+  gameInCartSetter,
+  totalPriceSetter,
+}) {
   const [searchFor, setSearchFor] = useState("");
-
 
   return (
     <div>
-      <SearchBar setSearchFor={setSearchFor} setFilteredGames={props.setFilteredGames}/>
-      {props.filteredGames === false ? <AllGamesPage setRenderSelectedGame={props.setRenderSelectedGame} renderSelectedGame={props.renderSelectedGame}/>: <FilteredGames setRenderSelectedGame={props.setRenderSelectedGame} renderSelectedGame={props.renderSelectedGame} searchFor={searchFor} allGames={allGames} />}
+      <SearchBar setSearchFor={setSearchFor} setFilteredGames={setFilteredGames} />
+      {filteredGames === false ? (
+        <AllGamesPage
+          setRenderSelectedGame={setRenderSelectedGame}
+          renderSelectedGame={renderSelectedGame}
+          gameInCartSetter={gameInCartSetter}
+          totalPriceSetter={totalPriceSetter}
+        />
+      ) : (
+        <FilteredGames
+          setRenderSelectedGame={setRenderSelectedGame}
+          renderSelectedGame={renderSelectedGame}
+          searchFor={searchFor}
+          allGames={allGames}
+          gameInCartSetter={gameInCartSetter}
+          totalPriceSetter={totalPriceSetter}
+        />
+      )}
     </div>
   );
 }

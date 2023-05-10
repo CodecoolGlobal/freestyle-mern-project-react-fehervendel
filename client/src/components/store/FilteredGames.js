@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import FilteredGame from "./AllGamesPage";
 import SelectedGame from "./SelectedGame";
 
-function FilteredGames({ searchFor }) {
+function FilteredGames({ searchFor, gameInCartSetter, totalPriceSetter }) {
   const [filteredGames, setFilteredGames] = useState([]);
   const [selectedGame, setSelectedGame] = useState({});
   const [renderSelectedGame, setRenderSelectedGame] = useState(false);
@@ -49,7 +49,11 @@ function FilteredGames({ searchFor }) {
           ))}
         </div>
       ) : (
-        <SelectedGame selectedGame={selectedGame} />
+        <SelectedGame
+          selectedGame={selectedGame}
+          gameInCartSetter={gameInCartSetter}
+          totalPriceSetter={totalPriceSetter}
+        />
       )}
     </div>
   );

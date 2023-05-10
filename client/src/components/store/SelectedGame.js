@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./css/SelectedGame.css";
 
-function SelectedGame({ selectedGame }) {
-  //return (<div>{selectedGame.name}</div>)
+function SelectedGame({ selectedGame, gameInCartSetter, totalPriceSetter }) {
+  function addToCartClickHandler(price) {
+    gameInCartSetter((prevState) => {
+      const newState = [...prevState, selectedGame];
+      return newState;
+    });
+    totalPriceSetter((prevState) => {
+      const newPrice = prevState + price;
+      return newPrice;
+    });
+  }
 
   return (
     <div>
@@ -18,13 +27,51 @@ function SelectedGame({ selectedGame }) {
           </div>
         </div>
         <div id="selectedGameContainerSecondColumn">
-          <div>Metacritic: {selectedGame.metacritic}</div>
-          <div>Average playtime: {selectedGame.playtime}</div>
-          <div>Release date: {new Date(selectedGame.released).toLocaleDateString()}</div>
+          <table id="selectedGameTable">
+            <tbody>
+              <tr>
+                <td>METACRITIC:</td>
+                <td>{selectedGame.metacritic}</td>
+              </tr>
+              <tr>
+                <td>RATING:</td>
+                <td>{selectedGame.rating}</td>
+              </tr>
+              <tr>
+                <td>RELEASE DATE:</td>
+                <td>{new Date(selectedGame.released).toLocaleDateString()}</td>
+              </tr>
+              <tr>
+                <td>AVG. PLAYTIME:</td>
+                <td>{selectedGame.playtime}</td>
+              </tr>
+              <tr>
+                <td>GENRES:</td>
+                <td>
+                  {selectedGame.genres
+                    .map((genre) => {
+                      return genre.name;
+                    })
+                    .join(", ")}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
           {selectedGame.price !== 0 ? (
             <div>
               <div>Buy {selectedGame.name}</div>
-              <div id="selectedGamePrice">{selectedGame.price} €</div>
+              <div id="selectedGamePrice">
+                {selectedGame.price} €{" "}
+                <button
+                  onClick={() => {
+                    addToCartClickHandler(selectedGame.price);
+                  }}
+                  id="addToCartButton"
+                >
+                  Add to Cart
+                </button>
+              </div>
             </div>
           ) : (
             <div>

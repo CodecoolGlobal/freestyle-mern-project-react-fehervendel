@@ -17,7 +17,7 @@
   width: 1015px;
   height: 510px;
   display: grid;
-  column-gap: 5px;
+  column-gap: 25px;
   grid-template-columns: 600px 1fr;
   background-color: rgb(41, 41, 41);
   color: rgb(148, 148, 148);
@@ -74,9 +74,31 @@
   box-sizing: border-box;
   display: grid;
   height: 300px;
-  width: 410px;
+  width: 380px;
+  margin-top: 40px;
 }
 
 #selectedGamePrice {
-  font-size: 22px;
+  margin-top: 15px;
+  font-size: 24px;
+  color: rgb(217, 250, 236);
+}
+
+#selectedGameTable td:nth-child(1) {
+  width: 150px;
+  text-align: left;
+  line-height: 30px;
+}
+#selectedGameTable td:nth-child(2) {
+  width: 250px;
+  text-align: left;
+}
+
+#selectedGameTable {
+  margin-bottom: 150px;
+}
+
+#addToCartButton {
+  color: rgb(25, 38, 34);
+  background-color: rgb(50, 132, 98);
 }
