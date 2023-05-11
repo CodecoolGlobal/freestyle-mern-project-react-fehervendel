@@ -39,6 +39,19 @@ app.get("/api/allgames", async (req, res) => {
   }
 });
 
+app.get("/api/:userName/libraryGames", async (req, res) => {
+  const userName = req.params.userName;
+  console.log(userName);
+  try {
+    const loggedInUser = await User.findOne({ userName: userName });
+    const games = loggedInUser.games;
+    res.status(200).json(games);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Failed to fetch games in library!");
+  }
+});
+
 app.delete("/api/userdelete", async (req, res) => {
   try {
     const userName = req.body.userName;

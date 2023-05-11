@@ -1,10 +1,16 @@
-function GameInCart({ game }) {
-  //   <div onClick={() => selectGame(game)} id="storeGameContainer">
-  //     <img src={game.background_image} id="storeBackGroundImage"></img>
-  //     <div id="storeGameName">{game.name}</div>
-  //     <div id="storeGameRelease">{releaseDate}</div>
-  //     {game.price !== 0 ? <div id="storeGamePrice">{game.price} €</div> : <div id="storeGamePrice">Free to Play</div>}
-  //   </div>;
+function GameInCart({ game, totalPriceSetter, gamesInCartSetter }) {
+  function removeGameFromCartClickHandler() {
+    gamesInCartSetter((prevState) => {
+      const newState = [...prevState].filter((currentGame) => {
+        return currentGame.id !== game.id;
+      });
+      return newState;
+    });
+    totalPriceSetter((prevState) => {
+      const newPrice = prevState - game.price;
+      return Number(newPrice.toFixed(2));
+    });
+  }
 
   return (
     <>
@@ -12,7 +18,9 @@ function GameInCart({ game }) {
         <img src={game.background_image} id="cartBackGroundImage"></img>
         <div id="cartGameName">{game.name}</div>
         <div id="cartGamePrice">{game.price} €</div>
-        <div id="cartGameRemoveButton">Remove</div>
+        <div onClick={removeGameFromCartClickHandler} id="cartGameRemoveButton">
+          Remove
+        </div>
       </div>
     </>
   );

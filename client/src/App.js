@@ -24,10 +24,28 @@ function App() {
   const [renderSelectedGame, setRenderSelectedGame] = useState(false);
   const [gamesInShoppingCart, setGamesInShoppingCart] = useState([]);
   const [totalPriceInCart, setTotalPriceInCart] = useState(0);
+  const [gamesInLibrary, setGamesInLibrary] = useState(null);
 
   useEffect(() => {
     getFirst20Games();
   }, []);
+
+  useEffect(() => {
+    if (loggedInUser.name !== "") {
+      getGamesInLibrary(loggedInUser.name);
+    }
+  }, [loggedInUser]);
+
+  async function getGamesInLibrary(userName) {
+    try {
+      const res = await fetch(`http://localhost:3001/api/${userName}/libraryGames`);
+      const response = await res.json();
+      setGamesInLibrary(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   async function getFirst20Games() {
     try {
       const res = await fetch("http://localhost:3001/api/games");
@@ -95,8 +113,9 @@ function App() {
           allGames={allGames}
           setRenderSelectedGame={setRenderSelectedGame}
           renderSelectedGame={renderSelectedGame}
-          gameInCartSetter={setGamesInShoppingCart}
+          gamesInCartSetter={setGamesInShoppingCart}
           totalPriceSetter={setTotalPriceInCart}
+          showTabSetter={setShowTab}
         />
       ) : (
         <></>
@@ -106,6 +125,9 @@ function App() {
           games={gamesInShoppingCart}
           totalPrice={totalPriceInCart}
           totalPriceSetter={setTotalPriceInCart}
+          gamesInLibrarySetter={setGamesInLibrary}
+          showTabSetter={setShowTab}
+          gamesInCartSetter={setGamesInShoppingCart}
         />
       ) : (
         <></>

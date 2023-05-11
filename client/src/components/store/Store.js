@@ -10,8 +10,9 @@ function Store({
   allGames,
   renderSelectedGame,
   setRenderSelectedGame,
-  gameInCartSetter,
+  gamesInCartSetter,
   totalPriceSetter,
+  showTabSetter,
 }) {
   const [searchFor, setSearchFor] = useState("");
 
@@ -22,8 +23,9 @@ function Store({
         <AllGamesPage
           setRenderSelectedGame={setRenderSelectedGame}
           renderSelectedGame={renderSelectedGame}
-          gameInCartSetter={gameInCartSetter}
+          gamesInCartSetter={gamesInCartSetter}
           totalPriceSetter={totalPriceSetter}
+          showTabSetter={showTabSetter}
         />
       ) : (
         <FilteredGames
@@ -31,8 +33,9 @@ function Store({
           renderSelectedGame={renderSelectedGame}
           searchFor={searchFor}
           allGames={allGames}
-          gameInCartSetter={gameInCartSetter}
+          gamesInCartSetter={gamesInCartSetter}
           totalPriceSetter={totalPriceSetter}
+          showTabSetter={showTabSetter}
         />
       )}
     </div>

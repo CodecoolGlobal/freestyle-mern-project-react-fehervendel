@@ -19,6 +19,7 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  games: [String],
 });
 
 const User = mongoose.model("User", userSchema);

@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./css/SelectedGame.css";
 
-function SelectedGame({ selectedGame, gameInCartSetter, totalPriceSetter }) {
+function SelectedGame({ selectedGame, gamesInCartSetter, totalPriceSetter, showTabSetter }) {
   function addToCartClickHandler(price) {
-    gameInCartSetter((prevState) => {
+    gamesInCartSetter((prevState) => {
       const newState = [...prevState, selectedGame];
       return newState;
     });
     totalPriceSetter((prevState) => {
       const newPrice = prevState + price;
-      return newPrice;
+      return Number(newPrice.toFixed(2));
     });
+    showTabSetter("cart");
   }
 
   return (

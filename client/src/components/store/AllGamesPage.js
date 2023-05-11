@@ -2,7 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./css/AllGamesPage.css";
 import SelectedGame from "./SelectedGame";
 
-function AllGamesPage({ renderSelectedGame, setRenderSelectedGame, gameInCartSetter, totalPriceSetter }) {
+function AllGamesPage({
+  renderSelectedGame,
+  setRenderSelectedGame,
+  gamesInCartSetter,
+  totalPriceSetter,
+  showTabSetter,
+}) {
   const [allGames, setAllGames] = useState([]);
   const [selectedGame, setSelectedGame] = useState({});
 
@@ -51,8 +57,9 @@ function AllGamesPage({ renderSelectedGame, setRenderSelectedGame, gameInCartSet
       ) : (
         <SelectedGame
           selectedGame={selectedGame}
-          gameInCartSetter={gameInCartSetter}
+          gamesInCartSetter={gamesInCartSetter}
           totalPriceSetter={totalPriceSetter}
+          showTabSetter={showTabSetter}
         />
       )}
     </div>

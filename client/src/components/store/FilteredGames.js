@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import FilteredGame from "./AllGamesPage";
 import SelectedGame from "./SelectedGame";
 
-function FilteredGames({ searchFor, gameInCartSetter, totalPriceSetter }) {
+function FilteredGames({ searchFor, gamesInCartSetter, totalPriceSetter, showTabSetter }) {
   const [filteredGames, setFilteredGames] = useState([]);
   const [selectedGame, setSelectedGame] = useState({});
   const [renderSelectedGame, setRenderSelectedGame] = useState(false);
@@ -39,8 +39,8 @@ function FilteredGames({ searchFor, gameInCartSetter, totalPriceSetter }) {
     <div>
       {renderSelectedGame === false ? (
         <div id="storeGames">
-          {filteredGames.map((game) => (
-            <div onClick={() => selectGame(game)} id="storeGameContainer">
+          {filteredGames.map((game, index) => (
+            <div key={index} onClick={() => selectGame(game)} id="storeGameContainer">
               <img src={game.background_image} id="storeBackGroundImage" />
               <div id="storeGameName">{game.name}</div>
               <div id="storeGameRelease">{new Date(game.released).toLocaleDateString()}</div>
@@ -51,8 +51,9 @@ function FilteredGames({ searchFor, gameInCartSetter, totalPriceSetter }) {
       ) : (
         <SelectedGame
           selectedGame={selectedGame}
-          gameInCartSetter={gameInCartSetter}
+          gamesInCartSetter={gamesInCartSetter}
           totalPriceSetter={totalPriceSetter}
+          showTabSetter={showTabSetter}
         />
       )}
     </div>
