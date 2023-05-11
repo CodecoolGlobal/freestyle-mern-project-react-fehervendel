@@ -1,11 +1,42 @@
 import GameInCart from "./GameInCart";
 import "./css/GameInCart.css";
-import { useState } from "react";
 
-function ShoppingCart({ games, totalPrice, totalPriceSetter, gamesInLibrarySetter, gamesInCartSetter, showTabSetter }) {
+function ShoppingCart({
+  gamesInCart,
+  totalPrice,
+  totalPriceSetter,
+  gamesInCartSetter,
+  showTabSetter,
+  loggedInUser,
+  showRegisterFormSetter,
+}) {
+  function purchaseClickHandler() {
+    if (loggedInUser.name === "") {
+      showRegisterFormSetter("login");
+    } else {
+      gamesInCart.forEach((game) => {
+        sendPurchasedGameId(game._id, loggedInUser.name);
+      });
+    }
+  }
+
+  async function sendPurchasedGameId(id, userName) {
+    try {
+      const res = await fetch(`http://localhost:3001/api/purchaseGame/${id}`, {
+        method: "POST",
+        body: JSON.stringify({ userName: userName }),
+        headers: { "Content-Type": "application/json" },
+      });
+      const response = await res.text();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <>
-      {games.length === 0 ? (
+      {gamesInCart.length === 0 ? (
         <>
           <div id="noGamesYet">There are no games in your Cart yet!</div>
           <button
@@ -18,7 +49,7 @@ function ShoppingCart({ games, totalPrice, totalPriceSetter, gamesInLibrarySette
         </>
       ) : (
         <div id="cartGames">
-          {games.map((game, index) => {
+          {gamesInCart.map((game, index) => {
             return (
               <GameInCart
                 key={index}
@@ -31,7 +62,7 @@ function ShoppingCart({ games, totalPrice, totalPriceSetter, gamesInLibrarySette
           <div id="cartConfirmContainer">
             <div id="estimated">Estimated total:</div>
             <div id="totalPrice">{totalPrice} €</div>
-            <button>Purchase</button>
+            <button onClick={purchaseClickHandler}>Purchase</button>
           </div>
         </div>
       )}

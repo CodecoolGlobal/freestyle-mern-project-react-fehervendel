@@ -30,28 +30,30 @@ function Loginfields(props) {
         headers: { "Content-type": "application/json; charset=UTF-8" },
       });
       const response = await res.json();
-      
-      if( response.access === 1){
-       
-        props.userDataSetter(prevState => ({
-          ...prevState, name: userName
+
+      if (response.access === 1) {
+        props.userDataSetter((prevState) => ({
+          ...prevState,
+          name: userName,
         }));
 
-        props.userDataSetter(prevState => ({
-          ...prevState, loggedIn: true
+        props.userDataSetter((prevState) => ({
+          ...prevState,
+          loggedIn: true,
         }));
-        
-        props.userDataSetter(prevState => ({
-          ...prevState, email: response.email
+
+        props.userDataSetter((prevState) => ({
+          ...prevState,
+          email: response.email,
         }));
 
         console.log("Access enabled!");
-        props.setShowRegisterForm('user');
+        props.setShowRegisterForm("user");
+        props.tabSetter("library");
       } else {
         //denying user entry
         console.log("Access denied!");
       }
-      
     } catch (error) {
       console.error(error);
     }

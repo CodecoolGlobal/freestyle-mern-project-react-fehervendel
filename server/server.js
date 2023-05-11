@@ -28,6 +28,24 @@ app.get("/api/games", async (req, res) => {
     res.status(500).send("Games fetch failed");
   }
 });
+app.post("/api/purchaseGame/:id", async (req, res) => {
+  const userName = req.body.userName;
+  const purchasedGameId = req.params.id;
+  try {
+    const user = await User.findOne({ userName: userName });
+    console.log(user.games);
+    if (user.games.length === 0) {
+      user.games = [purchasedGameId];
+    } else {
+      user.games.push(purchasedGameId);
+    }
+    await user.save();
+    res.status(200).send("Game successfully purchased!");
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Purchase failed!");
+  }
+});
 
 app.get("/api/allgames", async (req, res) => {
   try {
@@ -44,8 +62,12 @@ app.get("/api/:userName/libraryGames", async (req, res) => {
   console.log(userName);
   try {
     const loggedInUser = await User.findOne({ userName: userName });
-    const games = loggedInUser.games;
-    res.status(200).json(games);
+    const gameIDs = loggedInUser.games;
+    const promises = gameIDs.map(async (gameId) => {
+      return await Game.findOne({ _id: gameId });
+    });
+    const gamesInLibrary = await Promise.all(promises);
+    res.status(200).json(gamesInLibrary);
   } catch (error) {
     console.log(error);
     res.status(500).send("Failed to fetch games in library!");

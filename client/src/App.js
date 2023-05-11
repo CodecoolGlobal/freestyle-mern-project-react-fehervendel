@@ -6,6 +6,7 @@ import Home from "./components/home/Home.js";
 import Store from "./components/store/Store.js";
 import UserProfile from "./components/home/UserProfile.js";
 import ShoppingCart from "./components/cart/ShoppingCart.js";
+import Library from "./components/library/Library.js";
 import "./App.css";
 
 function App() {
@@ -30,22 +31,6 @@ function App() {
     getFirst20Games();
   }, []);
 
-  useEffect(() => {
-    if (loggedInUser.name !== "") {
-      getGamesInLibrary(loggedInUser.name);
-    }
-  }, [loggedInUser]);
-
-  async function getGamesInLibrary(userName) {
-    try {
-      const res = await fetch(`http://localhost:3001/api/${userName}/libraryGames`);
-      const response = await res.json();
-      setGamesInLibrary(response);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   async function getFirst20Games() {
     try {
       const res = await fetch("http://localhost:3001/api/games");
@@ -59,6 +44,7 @@ function App() {
   useEffect(() => {
     getAllGames();
   }, []);
+
   async function getAllGames() {
     try {
       const res = await fetch("http://localhost:3001/api/allgames");
@@ -122,16 +108,20 @@ function App() {
       )}
       {showTab === "cart" ? (
         <ShoppingCart
-          games={gamesInShoppingCart}
+          gamesInCart={gamesInShoppingCart}
           totalPrice={totalPriceInCart}
           totalPriceSetter={setTotalPriceInCart}
-          gamesInLibrarySetter={setGamesInLibrary}
           showTabSetter={setShowTab}
           gamesInCartSetter={setGamesInShoppingCart}
+          loggedInUser={loggedInUser}
+          showRegisterFormSetter={setShowRegisterForm}
         />
       ) : (
         <></>
       )}
+      {showTab === "library" ? (
+        <Library gamesInLibrary={gamesInLibrary} loggedInUser={loggedInUser} gamesInLibrarySetter={setGamesInLibrary} />
+      ) : null}
     </div>
   );
 }
