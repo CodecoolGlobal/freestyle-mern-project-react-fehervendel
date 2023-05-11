@@ -4,6 +4,15 @@
   font-size: 22px;
   margin-bottom: 20px;
 }
+#estimated {
+  color: rgb(217, 250, 236);
+  font-size: 20px;
+}
+#totalPrice {
+  color: rgb(217, 250, 236);
+  font-size: 22px;
+  margin-bottom: 10px;
+}
 
 #cartGames {
   margin-top: 30px;
