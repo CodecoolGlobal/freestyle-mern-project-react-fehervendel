@@ -25,7 +25,7 @@ function App() {
   const [renderSelectedGame, setRenderSelectedGame] = useState(false);
   const [gamesInShoppingCart, setGamesInShoppingCart] = useState([]);
   const [totalPriceInCart, setTotalPriceInCart] = useState(0);
-  const [gamesInLibrary, setGamesInLibrary] = useState(null);
+  const [gamesInLibrary, setGamesInLibrary] = useState([]);
 
   useEffect(() => {
     getFirst20Games();

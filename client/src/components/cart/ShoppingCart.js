@@ -18,6 +18,8 @@ function ShoppingCart({
         sendPurchasedGameId(game._id, loggedInUser.name);
       });
     }
+    showTabSetter("library");
+    gamesInCartSetter([]);
   }
 
   async function sendPurchasedGameId(id, userName) {

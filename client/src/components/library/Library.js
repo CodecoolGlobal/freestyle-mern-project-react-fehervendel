@@ -28,7 +28,19 @@ function Library({ loggedInUser, gamesInLibrarySetter, gamesInLibrary }) {
       {loggedInUser.name !== "" && gamesInLibrary.length === 0 ? (
         <div id="message">You don't have any games yet! Browse our store and buy some!</div>
       ) : null}
-      {loggedInUser.name !== "" && gamesInLibrary.length !== 0 ? <div>Games in Library</div> : null}
+      {loggedInUser.name !== "" && gamesInLibrary.length !== 0 ? (
+        <div id="storeGames">
+          {gamesInLibrary.map((game, index) => {
+            return (
+              <div key={index} id="storeGameContainer">
+                <img src={game.background_image} id="storeBackGroundImage"></img>
+                <div id="storeGameName">{game.name}</div>
+                <div>Play</div>
+              </div>
+            );
+          })}
+        </div>
+      ) : null}
     </>
   );
 }
