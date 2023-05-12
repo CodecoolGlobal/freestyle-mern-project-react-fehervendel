@@ -68,7 +68,7 @@ function SelectedGame({ selectedGame, gamesInCartSetter, totalPriceSetter, showT
                   onClick={() => {
                     addToCartClickHandler(selectedGame.price);
                   }}
-                  id="addToCartButton"
+                  
                 >
                   Add to Cart
                 </button>

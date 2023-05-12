@@ -1,4 +1,5 @@
 #header {
+  display: flex;
   box-sizing: border-box;
   max-width: 100vw;
   height: 120px;
@@ -8,15 +9,23 @@
   font-size: 16px;
   cursor: default;
 }
-
+.menuButtons{
+  display: flex;
+  justify-content: flex-end;
+  height: 100%;
+  width: 100%;
+  font-size: 15x;
+  padding-top: 10px;
+  
+}
 #container {
+  display: flex;
   padding-left: calc((100vw - 640px) / 2);
-  height: 50px;
-  width: 555px;
+  height: 100%;
+  width: 710px;
   align-items: center;
-  display: grid;
   column-gap: 0px;
-  grid-template-columns: 220px 335px;
+  grid-template-columns: 220px 490px;
 }
 #logoContainer {
   width: 220px;

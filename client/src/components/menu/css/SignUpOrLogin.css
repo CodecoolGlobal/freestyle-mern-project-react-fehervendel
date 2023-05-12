@@ -3,5 +3,9 @@
   height: 30px;
   text-align: right;
   margin-right: 20%;
-  padding-top: 15px;
+  padding-top: 30px;
+}
+
+.button1{
+  font-size: 15px;
 }

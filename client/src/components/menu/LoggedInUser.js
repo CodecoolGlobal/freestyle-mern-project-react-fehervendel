@@ -17,8 +17,8 @@ function LoggedInUser(props) {
   return (
     <div id="userLoginContainer">
       <div>Welcome {props.userName}!</div>
-      <button type="button" onClick={showProfile}>Profile</button>
-      <button type="button" onClick={logOut}>
+      <button className="button1" type="button" onClick={showProfile}>Profile</button>
+      <button className="button1" type="button" onClick={logOut}>
         Log out
       </button>
     </div>

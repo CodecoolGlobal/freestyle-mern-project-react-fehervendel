@@ -48,11 +48,7 @@ function Menu(props) {
   //props.userData.loggedIn
   return (
     <div id="header">
-      {props.userData.loggedIn ? (
-        <LoggedInUser userName={props.userData.name} loginSetter={props.loginSetter} tabSetter={props.tabSetter} />
-      ) : (
-        <SignUpOrLogin setShowRegisterForm={props.setShowRegisterForm} tabSetter={props.tabSetter} />
-      )}
+     
       <div id="container">
         <div id="logoContainer" className={showTab !== undefined && showTab === "home" ? "clicked" : "notClicked"}>
           <img src={logo} alt="Matrix Logo" id="logo" />
@@ -92,6 +88,15 @@ function Menu(props) {
             CART
           </div>
         </div>
+      </div>
+      <div className="menuButtons">
+      {props.userData.loggedIn ? (
+        <LoggedInUser userName={props.userData.name} loginSetter={props.loginSetter} tabSetter={props.tabSetter} />
+      ) : (
+        
+        <SignUpOrLogin setShowRegisterForm={props.setShowRegisterForm} tabSetter={props.tabSetter} />
+        
+      )}
       </div>
     </div>
   );

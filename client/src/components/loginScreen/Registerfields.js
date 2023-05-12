@@ -59,33 +59,47 @@ function Registerfields(props) {
   }
 
   return (
-    <div id="registerContainer">
-      <label>Username:</label>
-      <br />
-      <input type="text" placeholder="Username" value={userName} onChange={(e) => setUserName(e.target.value)}></input>
-      <br />
-      <label>Password:</label>
-      <br />
+    <div className="registerContainer">
+      <h1>Welcome to Shadow Gaming Store!</h1>
+      
+      <div className="userProfile">
+      <div className="left">Username:</div>
+     <div className="right">
+     <input type="text" id="searchBar" placeholder="Username" value={userName} onChange={(e) => setUserName(e.target.value)}></input>
+     </div>
+    
+    
+      </div>
+      <div className="userProfile">
+      <div className="left">Password:</div>
+      <div className="right">
       <input
+      id="searchBar"
         type="password"
         placeholder="Password"
         value={userPassword}
         onChange={(e) => setUserPassword(e.target.value)}
       ></input>
-      <br />
-      <label>Password again:</label>
-      <br />
+      </div>
+      </div>
+      <div className="userProfile">
+      <div className="left">Password again:</div>
+      <div className="right">
       <input
+         id="searchBar"
         type="password"
         placeholder="Password again"
         value={userPasswordAgain}
         onChange={(e) => setUserPasswordAgain(e.target.value)}
       ></input>
-      <br />
-      <label>E-mail:</label>
-      <br />
-      <input type="email" placeholder="E-mail" value={userEmail} onChange={(e) => setEmail(e.target.value)}></input>
-      <br />
+      </div>
+      </div>
+      <div className="userProfile">
+      <div className="left">E-mail:</div>
+      <div className="right">
+      <input id="searchBar" type="email" placeholder="E-mail" value={userEmail} onChange={(e) => setEmail(e.target.value)}></input>
+      </div>
+      </div>
       <button type="button" onClick={registerUser}>
         Register
       </button>

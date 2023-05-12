@@ -18,9 +18,9 @@ function GameInCart({ game, totalPriceSetter, gamesInCartSetter }) {
         <img src={game.background_image} id="cartBackGroundImage"></img>
         <div id="cartGameName">{game.name}</div>
         <div id="cartGamePrice">{game.price} €</div>
-        <div onClick={removeGameFromCartClickHandler} id="cartGameRemoveButton">
+        <button onClick={removeGameFromCartClickHandler} id="cartGameRemoveButton">
           Remove
-        </div>
+        </button>
       </div>
     </>
   );

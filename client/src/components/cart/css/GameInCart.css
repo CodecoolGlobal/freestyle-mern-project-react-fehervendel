@@ -53,7 +53,8 @@
 }
 
 #cartGameRemoveButton {
-  height: 16px;
-  margin-top: calc((58px - 16px) / 2);
+  margin-top: 15px;
+  margin-right: 5px;
+  height: 30px;
   font-size: 16px;
 }

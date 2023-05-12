@@ -20,6 +20,7 @@ function ShoppingCart({
     }
     showTabSetter("library");
     gamesInCartSetter([]);
+    totalPriceSetter(0);
   }
 
   async function sendPurchasedGameId(id, userName) {
@@ -61,9 +62,9 @@ function ShoppingCart({
               />
             );
           })}
-          <div id="cartConfirmContainer">
-            <div id="estimated">Estimated total:</div>
-            <div id="totalPrice">{totalPrice} €</div>
+          <div id="userProfile">
+            <div className="userProfile">Estimated total:  <div className="right">{totalPrice} €</div></div>
+          
             <button onClick={purchaseClickHandler}>Purchase</button>
           </div>
         </div>

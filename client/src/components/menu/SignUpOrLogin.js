@@ -14,10 +14,10 @@ function SignUpOrLogin(props) {
 
   return (
     <div id="userLoginContainer">
-      <button type="button" onClick={signUp}>
+      <button className="button1" type="button" onClick={signUp}>
         Sign Up
       </button>
-      <button type="button" onClick={logIn}>
+      <button className="button1" type="button" onClick={logIn}>
         Login
       </button>
     </div>

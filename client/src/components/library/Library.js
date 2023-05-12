@@ -34,8 +34,8 @@ function Library({ loggedInUser, gamesInLibrarySetter, gamesInLibrary }) {
             return (
               <div key={index} id="storeGameContainer">
                 <img src={game.background_image} id="storeBackGroundImage"></img>
-                <div id="storeGameName">{game.name}</div>
-                <div>Play</div>
+                <div className="gameLeft">{game.name}</div>
+                <div className="gameRight"> <button className="playButton">Play</button></div>
               </div>
             );
           })}

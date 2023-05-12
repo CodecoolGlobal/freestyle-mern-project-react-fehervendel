@@ -61,19 +61,25 @@ function Loginfields(props) {
 
   return (
     <div id="loginContainer">
-      <label>Username:</label>
-      <br />
-      <input type="text" placeholder="Username" value={userName} onChange={(e) => setUserName(e.target.value)}></input>
-      <br />
-      <label>Password:</label>
-      <br />
+    <h1>Welcome to Shadow Gaming Store!</h1>
+      <div className="userProfile">
+      <div className="left">Username:</div>
+    
+      <input id="searchBar" type="text" placeholder="Username" value={userName} onChange={(e) => setUserName(e.target.value)}></input>
+
+      </div>
+
+      <div className="userProfile">
+      <div className="left">Password:</div>
       <input
+       id="searchBar"
         type="password"
         placeholder="Password"
         value={userPassword}
         onChange={(e) => setUserPassword(e.target.value)}
       ></input>
-      <br />
+      </div>
+
       <button type="button" onClick={logIn}>
         Log in
       </button>

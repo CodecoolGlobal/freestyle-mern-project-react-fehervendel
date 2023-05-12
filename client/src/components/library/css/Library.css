@@ -4,3 +4,21 @@
   font-size: 22px;
   margin-bottom: 20px;
 }
+.playButton{
+  height:30px;
+  width: 150px;
+  margin-right: 10px;
+  margin-bottom: 9px;
+}
+#storeGameContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+ 
+}
+.gameLeft{
+  text-align: left;
+}
+.gameRight{
+  text-align: right; 
+}

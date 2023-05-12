@@ -88,25 +88,28 @@ function UserProfile(props) {
 
   return (
     <div>
-      <div>Welcome to UserProfile Component!</div>
-      <div>Your username: {props.userData.name}</div>
-      <div>
-        <input placeholder="new user name" value={userName} onChange={(e) => setUserName(e.target.value)}></input>
-        <button type="button" onClick={changeUserName}>
-          Change
-        </button>
-        <div>{messageName}</div>
-      </div>
-      <div>Your email: {props.userData.email}</div>
-      <div>
-        <input placeholder="new email address" value={userEmail} onChange={(e) => setUserEmail(e.target.value)}></input>
-        <button type="button" onClick={changeUserEmail}>
-          Change
-        </button>
+      <h1>Your Profile</h1>
+        <div className="userProfile">
+          
+          <div className="left">Your username: {props.userData.name}</div>
+          <div className="right"><input id="searchBar" placeholder="new user name" value={userName} onChange={(e) => setUserName(e.target.value)}></input>
+                <button type="button" onClick={changeUserName}>
+                  Change
+                </button>
+          </div>
+
+        </div>
+        <div className="userProfile">
         
-        <div>{messageEmail}</div>
+         <div className="left">Your email: {props.userData.email}</div>
+         <div className="right"><input  id="searchBar" placeholder="new email address" value={userEmail} onChange={(e) => setUserEmail(e.target.value)}></input>
+          <button type="button" onClick={changeUserEmail}>Change</button>
+         </div>
+        
       </div>
       <button type="button" onClick={deleteMe}>Delete my profile</button>
+      <div>{messageEmail}</div>
+      <div>{messageName}</div>
     </div>
   );
 }
