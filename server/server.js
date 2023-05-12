@@ -59,7 +59,6 @@ app.get("/api/allgames", async (req, res) => {
 
 app.get("/api/:userName/libraryGames", async (req, res) => {
   const userName = req.params.userName;
-  console.log(userName);
   try {
     const loggedInUser = await User.findOne({ userName: userName });
     const gameIDs = loggedInUser.games;
