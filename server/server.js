@@ -202,7 +202,7 @@ const updateGamesWithPrice = async () => {
     await game.save();
   });
 };
-//updateGamesWithPrice();
+updateGamesWithPrice();
 
 function generatePriceBasedOnRatingAndReleaseDate(releaseDate, rating, tags) {
   const yearsUntilToday = Math.round(new Date("2023-04-28") / 31536000000);
@@ -233,7 +233,8 @@ function generatePriceBasedOnRatingAndReleaseDate(releaseDate, rating, tags) {
 //(userName !== userNameCheck[0].userName && userEmail !== userEmailCheck[0].userEmail)
 mongoose
   // .connect("mongodb+srv://lorikpatrik:7a8r4K01@cluster0.bu8nsrn.mongodb.net/project")
-  .connect("mongodb://127.0.0.1:27017/project")
+  //.connect("mongodb://127.0.0.1:27017/project")
+  .connect("mongodb+srv://dudwaa:izagy01@cluster0.ca61x07.mongodb.net/ShadowTeamWork")
   .then(() => {
     console.log("MongoDB connection was successful.");
     app.listen(3001, () => console.log("Server started on port 3001"));
